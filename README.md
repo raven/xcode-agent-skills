@@ -16,14 +16,15 @@ Xcode plugins contribute skills through the `Xcode.IDEIntelligenceProtocol.Skill
 
 ## Updating for a new Xcode build
 
+With the new Xcode **running** and its license accepted:
+
 ```sh
-# with the new Xcode running and its license accepted
-xcrun agent skills export --output-dir "$(pwd)/skills" --replace-existing
+./update-skills.sh /Applications/Xcode-beta.app   # defaults to xcode-select -p
 ```
 
-Note: `--output-dir` must be absolute — relative paths resolve against Xcode's own working directory.
+The script performs all three collection steps (export, bundle copy, binary extraction), then prints the `git commit` + `git tag` commands for the new build number. It warns instead of failing silently if a skill has moved or vanished in a new build — that's a diff worth noticing.
 
-Then re-copy the translation skills from the app bundle and re-extract `ios-dynamic-text`, commit, and tag with the Xcode build number.
+(If you're doing it by hand: `xcrun agent skills export` needs an absolute `--output-dir`, because relative paths resolve against Xcode's own working directory.)
 
 ## Provenance / license
 
