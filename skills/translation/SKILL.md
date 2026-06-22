@@ -39,11 +39,20 @@ Call `StringCatalogContext` with the target locale. The `sourceValues` field in 
 
 **Step 2: Read the source code** at the provided file paths to understand how the string is used. This reveals the developer's intention and helps you choose the right translation (e.g., imperative for buttons, descriptive for labels). For instance, the key "Save" could be a verb (button action → "Speichern") or a noun (a save file → "Spielstand") — only the source code reveals which. This step is REQUIRED for finding a good translation. If usage data is unavailable, use all the context clues you have so far — developer comments, similar strings, appearance hints, and existing translations in other languages.
 
-**Step 3: Make a choice about translation style** based on the instruction available to you (in order of most important to least important)
-1. If the user has provided explicit style guidance, follow this above all else
-2. Reference the style of any existing translations for the target locale
-3. Read the style guide at `./references/styleguide_{locale}.md` (e.g. `styleguide_pt-BR.md`, `styleguide_zh-Hans.md`)
-4. Otherwise, default to informal/colloquial style
+**Step 3: Gather available style and terminology input, then make style choices**
+
+Read and consider guidance from the following:
+- Explicit guidance in your instructions
+- Existing translations for the target locale
+- The locale-specific style guide
+
+They cover different concerns, and the higher-priority sources are often incomplete — the lower-priority ones fill the gaps rather than being ignored:
+
+1. **Explicit guidance in your instructions.** Any terminology or style direction in the instructions you were given (how to translate a specific term, the app name, tone guidance, DNT list, etc.) is authoritative — follow it above all else.
+2. **Existing translations for the target locale.** Match their terminology, phrasing, register, tone, etc. so the app's translations stay consistent. These reflect choices already made for this project and take precedence over the style guide.
+3. **The locale-specific style guide.** Always read `references/styleguide_{locale}.md` (resolve it relative to the skill's base directory) when one exists for the target locale (e.g. `styleguide_pt-BR.md`, `styleguide_zh-Hans.md`—if the file doesn't exist, there isn't a style guide for that locale). Use it to inform your choices when specific guidance doesn't exist in your instructions or existing translations.
+
+When these sources conflict, higher-priority items win: explicit instructions override existing translations, which override the style guide. Where none of them settles a question, default to informal/colloquial style.
 
 **Step 4: Formulate translation**
 Consider:
@@ -55,8 +64,9 @@ Consider:
 **Step 5: Determine if variation is needed**
 Check whether the translation needs plural variation, device variation, or both.
 
-- **Plural**: If the string contains a numeric format specifier (`%lld`, `%d`, `%u`, etc.) paired with a countable noun, read [references/plural-variations.md](./references/plural-variations.md). The context tool provides `relevantPluralCases` for your target locale—use all of them.
-- **Device**: If the string references a device-specific interaction (tap vs. click) or mentions a device by name, read [references/device-variations.md](./references/device-variations.md)
+- **Plural**: If the string contains a numeric format specifier (`%lld`, `%d`, `%u`, etc.) paired with a countable noun, read [references/plural-variations.md](./references/plural-variations.md) (resolve it relative to the skill's base directory). The context tool provides `relevantPluralCases` for your target locale—use all of them.
+    - If the context tool also returned `sourcePluralCasesToAdd`, the source itself isn't plural-varied yet. Vary the source first in a separate `StringCatalogEdit` call before translating the target — [references/plural-variations.md](./references/plural-variations.md) walks through this two-step flow.
+- **Device**: If the string references a device-specific interaction (tap vs. click) or mentions a device by name, read [references/device-variations.md](./references/device-variations.md) (resolve it relative to the skill's base directory)
 - **Both**: A string can need both — for example, "Tap to launch %lld spaceships" differs by device AND has a countable noun. Combine device and plural keys (e.g., `device.iphone.plural.one`), but keep `device.other` as a flat fallback string that covers both variations
 
 **Step 6: Insert translation**
@@ -89,7 +99,8 @@ Returns context and the source language value for a given string. The `sourceVal
 | `shouldTranslate` | Bool | Whether string should be translated (false = DO NOT TRANSLATE) |
 | `isStringSet` | Bool? | Whether this is a String Set (only present when true) |
 | `comment` | String? | Developer comment from String Catalog |
-| `relevantPluralCases` | [String] | Plural cases for target locale (e.g., `["plural.one", "plural.other"]`) |
+| `relevantPluralCases` | [String]? | Plural cases for target locale (e.g., `["plural.one", "plural.other"]`). Absent when the string doesn't require pluralization. |
+| `sourcePluralCasesToAdd` | [String]? | Plural cases for the source locale. Present when the source string has a numerical format specifier but is not yet plural-varied. Absent when the source string doesn't require pluralization. |
 | `translations` | [LocalizationInfo] | All existing translations across non-source locales |
 | `usageLocations` | [UsageLocation]? | Source code locations where string is used |
 | `appearances` | [AppearanceInfo]? | UI appearance hints (button, label, UI framework) |
@@ -426,7 +437,7 @@ A key can appear in multiple state buckets if variants have different states.
 1. **Use only String Catalog tools** to access .xcstrings files. Never write to them directly.
 2. **Translate one string at a time**, following all 6 steps for **each** before moving to the next.
 3. **Preserve format specifiers exactly** as they appear in source (`%1$lld`, `%@`, etc.).
-4. **Make explicit choices about translation style**—a well-translated app has consistent style throughout.
+4. **Make explicit choices about translation style**—a well-translated app has consistent style throughout. Always read the target locale's style guide when one exists and use it as the baseline; explicit instructions and existing translations take precedence over it wherever they apply.
 5. **Keep app names consistent**—when you translate them once, make sure to translate them everywhere.
 6. **Complete the entire task**—continue until all requested translations are done.
 7. **Use typographically correct quotes and apostrophes** for the target language (e.g., „...“ for German, «...» for French). All curly quotes must be escaped (e.g., \\u201E...\\u201C for German „...“), as well as apostrophes (e.g. \\u2019 for curly apostrophe). Other non-ascii characters do not need extra escaping–that includes the `&` character. DO NOT blindly escape everything.
@@ -440,7 +451,7 @@ For each string key:
 
 1. Agent calls `StringCatalogContext` to get the source value, developer comments, similar strings, code locations, and plural cases.
 2. Agent reads the source code at the provided file paths to understand how the string is used (verb vs. noun, button vs. label).
-3. Agent decides on a translation style by checking for explicit style guidance from the user, then checking for relevant translations from which to draw style cues, then reading the locale style guide.
+3. Agent reads the locale style guide (when one exists for the target locale), reviews existing translations for terminology and tone, and notes any explicit guidance in its instructions — then applies them with explicit instructions taking precedence over existing translations, and existing translations over the style guide.
 4. Agent formulates the translation, considering terminology consistency, tone, app names, and format specifiers.
 5. Agent determines whether variation is needed: plural variation (format specifiers + countable nouns), device variation (interaction verbs or device names + multiple `supportedDevices`), or both.
 6. Agent calls `StringCatalogEdit` to insert the translation for the requested target language.

@@ -37,9 +37,10 @@ Split the fetched strings into batches and delegate each batch to a sub-agent.
 
 1. Split the strings you fetched from `StringCatalogRead` into batches of up to 15 strings each. Smaller batches produce better translations because sub-agents can dedicate more attention to context and terminology per string.
 2. Create sub-agents for each batch. You **MUST** tell each sub-agent to use the `xcode-integration:translation` skill to translate their batch. Tell them to skip the `LocalizationPlanner` tool—you ran it for them.
-3. **Limit concurrency to 3 sub-agents at a time.** Launch at most 3 sub-agents in parallel, then wait for all of them to complete before launching the next group of up to 3. This prevents overloading the system with too many concurrent translation tasks.
+3. **Limit concurrency to 5 sub-agents at a time.** Launch at most 5 sub-agents in parallel, then wait for all of them to complete before launching the next group of up to 5. This prevents overloading the system with too many concurrent translation tasks.
 4. Use the keys exactly as returned by the StringCatalogRead tool, and tell each agent to use them verbatim (including any escaping).
 5. **Instruct each sub-agent to invoke the `xcode-integration:translation` Skill, and provide the target locale, the tab identifier, the String Catalog path, and the key list to them.** See the examples below for the exact format.
+6. Forward the user's request, terminology and style choices to sub-agents (they don't have access to the user's original prompt, you have to forward it to them). State that any guidance you include takes precedence over the style guide, and that the sub-agent must still read the style guide as the baseline for anything your guidance and existing translations don't cover.
 
 
 If you have any string keys that represent an app name (e.g. `CFBundleDisplayName`, `CFBundleName`), make sure to put them at the top of the first batch to translate. This way subsequent translations can reuse chosen terminology.

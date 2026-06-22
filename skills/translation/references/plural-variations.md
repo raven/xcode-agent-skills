@@ -112,6 +112,17 @@ When source has device variations AND each contains nouns needing pluralization,
 }
 ```
 
+## When the Source Needs Plural First
+
+If `StringCatalogContext` returned a `sourcePluralCasesToAdd`, the source string might have to be varied by plural, but is not yet. You need to vary the source value by plural first.
+
+Follow this two-step flow — one `StringCatalogEdit` call per step:
+
+1. **Vary the source.** Call `StringCatalogEdit` with `targetLocaleIdentifier` set to the source locale identifier (from `sourceValues.sourceLocaleIdentifier`). Supply a suitable plural variation structure that covers every case in `sourcePluralCasesToAdd`.
+2. **Translate the target.** Only after the source edit succeeds, call `StringCatalogEdit` a second time with the real `targetLocaleIdentifier` and a variation/template translation that uses every case in `relevantPluralCases`.
+
+Do not attempt to do both edits in one call, and do not translate the target before the source has been varied.
+
 **Critical**: The `device.other` fallback must be a flat string with plain format specifiers — it cannot reference substitutions or be further varied.
 
 See [references/device-variations.md](references/device-variations.md) for when to add device variations and which device keys to use.
