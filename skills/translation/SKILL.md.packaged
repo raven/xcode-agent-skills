@@ -1,6 +1,6 @@
 # String Catalog Translator
 
-Translate a given set of strings in Xcode String Catalogs using specialized MCP tools. Access String Catalogs **only** through these tools—never write .xcstrings files directly.
+Translate a given set of strings in Xcode String Catalogs using specialized MCP tools. These strings are user-facing software strings for apps on Apple platforms — typically short UI text such as button titles, labels, and messages. Translate them as you would for a native app on those platforms. Access String Catalogs **only** through these tools—never write .xcstrings files directly.
 
 Abort if no list of keys was provided, or if no target locale identifier was provided — something went wrong. Do not guess a locale from examples; the target locale must come from your initial instructions.
 
@@ -112,13 +112,22 @@ Returns context and the source language value for a given string. The `sourceVal
 
 #### LocalizationInfo
 
-The terminology choices for this string in other languages can be an indicator of what terminology to choose for this translation.
+The terminology choices for this string in other languages can be an indicator of what terminology to choose for this translation. The `isVaried` field is only present (and `true`) when the localization contains plural, device, or width variations; for plain translations it is omitted.
 
 ```json
 {
   "localeIdentifier": "de",
-  "value": "Willkommen!",
-  "isVaried": false
+  "value": "Willkommen!"
+}
+```
+
+When the localization is varied, `value` carries a human-readable description of the variation tree:
+
+```json
+{
+  "localeIdentifier": "he",
+  "value": "plural.one: ...\nplural.other: ...",
+  "isVaried": true
 }
 ```
 
@@ -440,7 +449,7 @@ A key can appear in multiple state buckets if variants have different states.
 4. **Make explicit choices about translation style**—a well-translated app has consistent style throughout. Always read the target locale's style guide when one exists and use it as the baseline; explicit instructions and existing translations take precedence over it wherever they apply.
 5. **Keep app names consistent**—when you translate them once, make sure to translate them everywhere.
 6. **Complete the entire task**—continue until all requested translations are done.
-7. **Use typographically correct quotes and apostrophes** for the target language (e.g., „...“ for German, «...» for French). All curly quotes must be escaped (e.g., \\u201E...\\u201C for German „...“), as well as apostrophes (e.g. \\u2019 for curly apostrophe). Other non-ascii characters do not need extra escaping–that includes the `&` character. DO NOT blindly escape everything.
+7. **Use typographically correct quotes and apostrophes** for the target language (e.g., „...“ for German, «...» for French). All curly quotes must be escaped (e.g., \\u201E...\\u201C for German „...“), as well as apostrophes (e.g. \\u2019 for curly apostrophe). NEVER XML-escape the ampersand: write a literal `&`, NOT `&amp;`. The same goes for all other HTML/XML entities — never write `&lt;`, `&gt;`, `&quot;`, or `&apos;`; write the literal `<`, `>`, `"`, `'` characters instead. The String Catalog stores Unicode text, not XML, so any `&amp;` would ship verbatim into the app. Other non-ascii characters do not need extra escaping either. DO NOT blindly escape everything.
 8. Do NOT skip steps to save time, even when there are hundreds of strings. Each step exists to prevent translation errors that are harder to find and fix later. This process takes time, and that's ok. Don't skip work or cut corners to save time, rather focus on accuracy and completeness.
 9. **Use the exact locale identifier from your instructions** as the `targetLocaleIdentifier` in every tool call. Do NOT normalize, canonicalize, or expand it (e.g., if told `zh-TW`, use `zh-TW` — never `zh-Hant-TW`; if told `pt-BR`, use `pt-BR` — never `pt-Latn-BR`). The String Catalog uses these identifiers as-is, and mismatches will cause translations to be stored under the wrong locale.
 

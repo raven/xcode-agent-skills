@@ -73,6 +73,8 @@ UIView {{100, 200}, {50, 30}}, center: {125.0, 215.0}
 
 **Always prefer the center coordinates for touch events.**
 
+Warning: Elements marked `isRemoteLeafPlaceholder` do not report child elements — interacting with them requires falling back to screenshot-estimated coordinates.
+
 ## Interaction Command Syntax
 
 The `interactionCommand` parameter accepts a command syntax:
