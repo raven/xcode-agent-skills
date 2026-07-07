@@ -2,7 +2,7 @@
 
 The agent skills (`SKILL.md` bundles) that Apple ships inside Xcode, tracked over time so changes between Xcode releases show up as diffs.
 
-Current snapshot: **Xcode 27.0 beta (27A5194q)** — 10 skills.
+Current snapshot: **Xcode 27.0 beta 3 (27A5218g)** — 11 skills.
 
 ## Where these come from
 
@@ -10,8 +10,8 @@ Xcode plugins contribute skills through the `Xcode.IDEIntelligenceProtocol.Skill
 
 | Skills | Source |
 | --- | --- |
-| `audit-xcode-security-settings`, `c-bounds-safety`, `device-interaction`, `swiftui-specialist`, `swiftui-whats-new-27`, `test-modernizer`, `uikit-app-modernization` | `xcrun agent skills export` against a running Xcode (the supported route — these are the "globally available" skills) |
-| `translation`, `translation-coordinator` | Copied from `IDEXCStringsSupport.framework/Versions/A/Resources/Skills/` in the app bundle (not globally available; Xcode injects them into its localization agent flow) |
+| `adopt-c-bounds-safety`, `audit-xcode-security-settings`, `c-bounds-safety`, `device-interaction`, `modernize-tests`, `swiftui-specialist`, `swiftui-whats-new-27`, `uikit-app-modernization` | `xcrun agent skills export` against a running Xcode (the supported route — these are the "globally available" skills) |
+| `translation`, `translation-coordinator` | Copied from `IDEXCStringsSupport.framework/Versions/A/Resources/Skills/` in the app bundle (not globally available; Xcode injects them into its localization agent flow). As of beta 3 the bundled files carry a `.packaged` suffix, preserved here |
 | `ios-dynamic-text` | Extracted from the `IDEAXSpecialist` framework binary, where it's embedded as a string (also not exported; `SKILL.md` only, no references) |
 
 ## Updating for a new Xcode build
