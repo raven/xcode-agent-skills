@@ -37,7 +37,10 @@ Call `StringCatalogContext` with the target locale. The `sourceValues` field in 
 - UI appearance hints (button vs. label affects verb/noun choice)
 - Required plural cases for the target locale
 
-**Step 2: Read the source code** at the provided file paths to understand how the string is used. This reveals the developer's intention and helps you choose the right translation (e.g., imperative for buttons, descriptive for labels). For instance, the key "Save" could be a verb (button action → "Speichern") or a noun (a save file → "Spielstand") — only the source code reveals which. This step is REQUIRED for finding a good translation. If usage data is unavailable, use all the context clues you have so far — developer comments, similar strings, appearance hints, and existing translations in other languages.
+**Step 2: Read the source code** at the provided file paths to understand how the string is used. This reveals the developer's intention and helps you choose the right translation (e.g., a verb for buttons, descriptive for labels). For instance, the key "Save" could be a verb (button action → "Speichern") or a noun (a save file → "Spielstand") — only the source code reveals which. Reading the source code is REQUIRED for finding a good translation. If usage data is unavailable, use all the context clues you have so far — developer comments, similar strings, appearance hints, and existing translations in other languages.
+
+Some UI words are both noun and verb (e.g. "Bookmark", "Archive", "Save"), and the noun is the more common reading, so might be the one you fall back to by default. When the comment, code, or appearance information shows the string is a button or other action control, you **MUST** translate it as a verb, not a noun. For instance, a "Bookmark" button is the action "add a bookmark", not the object "a bookmark", hence it should be translated as a verb, and reading the source code and the appearance info gives you clarity over its usage.
+Give both labels of a toggle (e.g. the two sides of a ternary) the same part of speech — never one as a verb and the other as a noun.
 
 **Step 3: Gather available style and terminology input, then make style choices**
 
@@ -56,7 +59,7 @@ When these sources conflict, higher-priority items win: explicit instructions ov
 
 **Step 4: Formulate translation**
 Consider:
-- **Terminology**: Match terms used in similar strings. If "Save" is translated as "Speichern" elsewhere, use it consistently.
+- **Terminology**: Match terms used in similar strings. If "Save" is translated as "Speichern" elsewhere, use it consistently. No matter the similar strings, make sure the part of speech of your target string is preserved: a noun sibling ("Bookmarks") is not a precedent for an action button that shares its stem ("Bookmark") — reuse the term, keep the part of speech the usage calls for.
 - **Tone and formality**: Decide on the style of your translation based on your choices in step 3
 - **App names**: Once you decide on how to translate an app name, make sure to to stick to this decision everywhere the app name is referenced.
 - **Format specifiers**: Understand what each specifier represents by reading the source code (e.g., `%lld` might be a count of items, files, or users).
@@ -145,7 +148,7 @@ Checking how the string is used in source code can provide important context on 
 
 #### AppearanceInfo
 
-The way this string is presented in UI can provide important context on the terminology to choose (noun vs. verb, etc.)
+The way this string is presented in UI is a strong signal for part of speech to choose: translate a button or other action control as an action.
 
 ```json
 {
