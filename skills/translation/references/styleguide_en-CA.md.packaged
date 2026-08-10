@@ -1,0 +1,16 @@
+# Canadian English (en-CA) — Software String Localization Style Guide
+
+> **Required first step — this guide is not self-contained.** Before you translate anything, you **must** read the [general English style guide](./styleguide_en.md): it holds the shared conventions for *all* English variants, and most of the rules you need live there, not in this file. The sections below cover **only** what is specific to Canadian English (en-CA), adding to or overriding the general guide — used on their own they will leave you missing the majority of the conventions. This list isn’t exhaustive; apply your knowledge of the variant for anything it doesn’t cover.
+
+## Canadian English (en-CA) specifics
+
+- **Spelling is a British–American hybrid — the defining trait**: Use British ‑our ("colour", "behaviour", "favour", "honour") and ‑re ("centre", "metre", "theatre", "litre"), double the L before an inflection ("travelled", "cancelled", "labelled"), and use ‑ce for nouns ("defence", "licence"). BUT use American ‑ize/‑yze, not ‑ise/‑yse ("organize", "realize", "initialize", "analyze"). So "colour" and "organize" coexist — neither pure UK nor pure US.
+- **Spelling — Canadian particulars**: "cheque" for the bank instrument (but "check" the verb and the checkbox), "grey", "catalogue", "dialogue". Use "program" (not "programme"). Note that "aluminum" and "tire" follow the American forms, not British "aluminium"/"tyre".
+- **Punctuation inside quotes**: Keep commas and full stops inside the closing quote, North American style.
+- **Serial comma — keep it** (matches the general rule): Canadian usage follows North American practice, so retain the serial comma ("phone calls, text messages, and reminders").
+- **Dates and time lean American**: English Canada usually writes month-day-year ("April 8, 2024"), so don’t switch to a day-month order; the week starts on Sunday. Time is typically 12-hour with "a.m."/"p.m.". Avoid bare all-numeric dates, which are genuinely ambiguous in Canada (both dd/mm and mm/dd occur) — prefer a spelled-out month, or ISO "2024-04-08" where a numeric form is required.
+- **Measurements — metric, but everyday imperial persists**: For en-CA the locale-appropriate units are metric — temperature (°C), distance (km), mass (kg) — but expect imperial in the personal contexts a Canadian actually uses, such as height in feet and inches and body weight in pounds.
+- **Numbers and currency**: Comma thousands separator and period decimal, US-style ("1,000.50"). Currency is "$", disambiguated as "CAD" or "C$" where needed. (The space-plus-comma number style belongs to Canadian French, fr-CA, not en-CA.)
+- **Collective nouns take a singular verb**: Like American English — "the team is", not "are".
+- **Phone numbers** follow the North American plan: "(403) 555-0199" or "403-555-0199", country code "+1".
+- **Don’t import French**: Canada is officially bilingual, but en-CA strings stay in English — leave French wording and France- or Québec-specific choices to fr-CA. Keep names and examples plausibly Canadian and multicultural.

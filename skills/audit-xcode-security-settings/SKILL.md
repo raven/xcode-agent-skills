@@ -74,9 +74,9 @@ The skill ships one helper script:
 Before doing any work, tell the user — in two or three sentences — what this skill is, what it will do, and roughly how much of their time and attention to expect:
 
 - **What it is.** An audit of the project's Xcode security build settings and entitlements (compiler warnings, Enhanced Security entitlements, pointer authentication, universal binaries for libraries, etc.).
-- **What happens.** I analyze the project, write an editable plan file at the project root for you to review, and apply only the changes you approve. Nothing is modified until you pick Run.
-- **Time commitment.** A few minutes of my time to analyze (longer on projects with many targets — I'll narrate progress). Then your review time on the plan file, which can be quick or thorough — your call. After Run, applying is fast; two things can pause for your input — the inquiry step (if there are deliberately-disabled settings whose rationale isn't documented), and a final yes/no on whether to keep the plan file in your project as a record.
-This all usually takes about 15-30 minutes, depending on the number of build targets and how long it takes for you to review and approve the plan.
+- **What happens.** The skill runs in two parts of roughly equal length. First, **planning**: I analyze the project and write an editable plan file at the project root for you to review. Then, **execution**: once you pick Run, I apply only the changes you approved. Nothing is modified until you pick Run.
+- **Time commitment.** *Planning* is a few minutes of my analysis (longer on projects with many targets — I'll narrate progress) plus your review of the plan file, which can be quick or thorough — your call. *Execution* takes about as long: applying the approved changes, with two things that can pause for your input — the inquiry step (if there are deliberately-disabled settings whose rationale isn't documented), and a final yes/no on whether to keep the plan file in your project as a record.
+This all usually takes about 15-30 minutes, split roughly evenly between the two parts, depending on the number of build targets and how long it takes for you to review and approve the plan.
 
 Keep it tight — the user already invoked the skill knowing they wanted an audit.
 The briefing exists so they have realistic expectations.
@@ -93,7 +93,7 @@ After delivering the briefing, pause via `AskUserQuestion`. If the project has s
 - **Begin audit** — proceed to Phase 2.
 - **Cancel** — exit with "Cancelled — no changes applied."
 
-If the project has **no source control**, tell the user first: *"It is strongly recommend setting up source control before continuing. This skill modifies build settings and entitlements; without something like Git, rollback requires manual undo and you won't have a clean way to review the differences. Xcode has built-in support for [Source control management](doc://com.apple.documentation/documentation/xcode/source-control-management)"* Then ask:
+If the project has **no source control**, tell the user first: *"It is strongly recommended setting up source control before continuing. This skill modifies build settings and entitlements; without something like Git, rollback requires manual undo and you won't have a clean way to review the differences. Xcode has built-in support for [Source control management](doc://com.apple.documentation/documentation/xcode/source-control-management)"* Then ask:
 
 - **Set up source control first (Recommended)** — exit with "[Set up source control](doc://com.apple.documentation/documentation/xcode/configuring-your-xcode-project-to-use-source-control) and re-run the skill."
 - **Proceed without source control** — proceed to Phase 2; Phase 4 Step 3 will surface the no-source-control reminder again in the plan file.
@@ -119,7 +119,10 @@ Every per-target / per-setting action that needs to happen must have its own tas
     - **Enable Enhanced Security**: `Enable Enhanced Security at project level` (one task). On pbxproj-only projects, this task encapsulates the guide-and-verify flow described in Phase 5 Step 1a.
     - **Update entitlements**: one `Apply Enhanced Security entitlements to <target>` per target needing changes.
     - **Hardware memory tagging**: `Apply Hardware Memory Tagging` (one task; walks supported targets internally).
-  - `Apply Basic Clang Safety Warnings` if checked.
+  - For each **Warnings** sub-item that's checked:
+    - `Apply Compiler Warnings` if that sub-item is checked.
+    - `Apply Static Analyzer Warnings` if that sub-item is checked.
+    - `Apply Clang-Tidy Warnings` if that sub-item is checked.
   - `Apply Additional Diagnostic Settings` if checked.
   - `Emit Bounds Safety Adoption guidance` if checked.
   - One `Inquire about <MACRO> on <target>` per Phase-6 candidate (only if "Inquire about disabled settings" is checked).
@@ -207,7 +210,7 @@ Source control was checked in Phase 1, and the user already accepted any no-sour
 `TaskList` the `Audit <target>` tasks and `TaskGet` each. Early-exit if **all** default-checked plan items are already at their target state:
 
 - Every Enhanced-Security category (from each task's `Category:` line) is **Up-to-date** or **Skipped**.
-- Every relevant Basic-Clang-safety setting is `already hardened` on every applicable target (per each task's Audit-table block).
+- Every relevant Warnings setting (compiler, static analyzer, and clang-tidy) is `already hardened` on every applicable target (per each task's Audit-table block).
 - No task's `Deliberately-disabled:` line yields a row (after the Phase-6 exclusions below).
 
 Optional follow-ups (Additional diagnostic settings, Bounds safety adoption) do **not** block early-exit. Report "Everything in scope is already configured" and exit; do not write a plan file.
@@ -224,16 +227,19 @@ Include only items that apply to the project (see omission rules below). Use thi
 **Generated:** <YYYY-MM-DD>
 > ⚠️ **No source control detected.** This skill modifies build settings and entitlements.
 > Without source control (e.g., Git), rollback requires manual undo. Consider [setting up source control](doc://com.apple.documentation/documentation/xcode/configuring-your-xcode-project-to-use-source-control) before picking **Run**.
-Edit the items below — set what steps to perform now, or leave them unchecked to defer them.
+Edit the items below — set what steps to perform now, or leave them unchecked to defer them. Questions about any item, or want a more detailed plan? Just ask — I'll answer, and can expand this plan on the points you care about before you decide.
 ## Phases
-- [x] **[Enhanced Security](doc://com.apple.documentation/documentation/Xcode/enabling-enhanced-security-for-your-app)** — the project's runtime-protection bundle. Apply to: <target list>.
-  - [x] **Enable Enhanced Security** — sets `ENABLE_ENHANCED_SECURITY=YES` at the project level. (Your project doesn't use a project-level xcconfig — I'll walk you through enabling it in Xcode's Build Settings UI yourself, then verify by reading project file.)
+- **Enhanced Security** — the project's runtime-protection bundle. Apply to: <target list>. (Group — check the sub-items below.)
+  - [x] **[Enable Enhanced Security](doc://com.apple.documentation/documentation/Xcode/enabling-enhanced-security-for-your-app)** — sets `ENABLE_ENHANCED_SECURITY=YES` at the project level. (Your project doesn't use a project-level xcconfig — I'll walk you through enabling it in Xcode's Build Settings UI yourself, then verify by reading project file.)
   - [x] **[Update entitlements](doc://com.apple.documentation/documentation/BundleResources/Entitlements/com.apple.security.hardened-process)** — adds the hardened-process entitlement family per target (Memory Safety, Runtime Protections).
   - [x] **[Hardware memory tagging](doc://com.apple.documentation/documentation/BundleResources/Entitlements/com.apple.security.hardened-process.checked-allocations)** — adds the soft-mode MTE entitlement on supported platforms (<target list filtered to MTE-supported platforms>).
-- [x] **Basic Clang safety warnings** — <N> settings, applied to all C/C++/ObjC targets.
+- **[Warnings](doc://com.apple.documentation/documentation/Xcode/build-settings-reference)** — additional diagnostics on all C/C++/ObjC targets. (Group — check the sub-items below.)
+  - [x] **Compiler warnings** — <N> settings promoting security-relevant compiler diagnostics (fire on every build).
+  - [x] **Static analyzer warnings** — <N> security checkers (run during Build and analyze).
+  - [x] **Clang-tidy warnings** — <N> clang-tidy-integrated checks (run during Build and analyze).
 - [x] **Inquire about disabled settings** — <M> found (e.g., `<setting>=NO` on `<target>`). May trigger follow-up questions if no rationale is documented.
-- [ ] **Additional diagnostic settings** — extra warnings/checkers. Produces more findings to review. See `references/additional-settings.md`.
-- [ ] **Bounds safety adoption** — pointer to a separate skill. No changes applied here.
+- [ ] **Additional diagnostic settings** — extra opt-in warnings/checkers beyond the defaults. Off by default: they surface more findings to review and can be noisier (more false positives).
+- [ ] **[Bounds safety adoption](https://clang.llvm.org/docs/BoundsSafetyAdoptionGuide.html)** — pointer to a separate skill. No changes applied here.
 ## Decision document
 The skill creates or updates `xcode-security-settings.md` to record every setting decision (kept, deferred, disabled, with rationale). Edit the path to relocate.
 - Path: `xcode-security-settings.md`
@@ -249,18 +255,20 @@ The decision document should live in the same directory as the rest of the docum
 
 A plan item is omitted entirely when it doesn't apply:
 
-- **Enhanced Security** — omit (along with all three sub-items) if every supported-product-type category from Phase 3 step 4 is **Up-to-date** or **Skipped**.
+- **Enhanced Security** — omit (along with all three sub-items) only if every supported-product-type category from Phase 3 step 4 is **Up-to-date** or **Skipped**. **Enhanced Security** must be enabled otherwise.
 - **Enable Enhanced Security** (sub-item) — never omitted when Enhanced Security is shown; the trailing pbxproj-only parenthetical is the only conditional part.
 - **Update entitlements** (sub-item) — never omitted when Enhanced Security is shown.
 - **Hardware memory tagging** (sub-item) — omit if no target's `SUPPORTED_PLATFORMS` / `SDKROOT` matches `macosx`, `iphoneos`, `iphonesimulator`, `xros`, or `xrsimulator`.
-- **Basic Clang safety warnings** — omit if pure-Swift, or if every relevant setting is `already hardened` on every applicable target.
+- **Warnings** — omit the parent (and all three sub-items) if pure-Swift, or if every setting across all three groups is `already hardened` on every applicable target. Otherwise omit an individual sub-item — **Compiler warnings**, **Static analyzer warnings**, or **Clang-tidy warnings** — when every setting in that group is `already hardened` on every applicable target, or the group has no applicable settings for the detected languages.
 - **Inquire about disabled settings** — omit if the `deliberately disabled` predicate yields no rows (after excluding any `ENABLE_POINTER_AUTHENTICATION[sdk=*simulator*] = NO` row — a simulator-only opt-out is expected and harmless, since the simulator has no `arm64e`).
 - **Additional diagnostic settings** — never omitted; always offered.
 - **Bounds safety adoption** — omit if Phase 3 step 2 detected no C, C++, or Objective-C++ (counting `sourcecode.cpp.*` overrides as C++).
 
 ##### Default check state
 
-Items under **Phases** are default-checked (`[x]`); items (`[ ]`) are default-unchecked.
+**Group headings carry no checkbox.** The parent lines that have sub-items — **Enhanced Security** and **Warnings** — are plain bold group labels, not checkable items; their sub-items carry the checkboxes. This avoids the ambiguity of a checked parent whose sub-items are all unchecked. Every other item (including leaf items with no sub-items, like **Inquire about disabled settings**, **Additional diagnostic settings**, **Bounds safety adoption**) is checkable.
+
+Leaf items and sub-items under **Phases** are default-checked (`[x]`); items marked (`[ ]`) are default-unchecked.
 The user can flip either by editing the plan file before picking **Run**.
 
 #### Step 4: Ask for approval
@@ -275,18 +283,22 @@ Then ask via `AskUserQuestion` with single-select options:
 
 #### Step 5: Handle the response
 
+If the user asks a question or requests more detail instead of picking Run/Cancel: answer it, consulting the relevant doc from **Bundled Reference Documents** (e.g. `references/additional-settings.md` for the additional diagnostic settings). If they want that detail captured, update `xcode-security-audit-plan.md` via `XcodeUpdate` to elaborate on those points. Then re-present the Step 4 approval prompt — nothing is applied until the user picks Run.
+
 If **Cancel**: run the final cleanup task (`Prompt to remove plan file`, see "Phase 7: Report and Decision Document" below). The keep-or-remove prompt is offered on Cancel too, so the user's choice to abandon the audit doesn't silently differ from a normal completion. Report "Cancelled — no changes applied," and exit the skill.
 
 If the plan file is missing at re-read time (the user deleted it from disk before responding), treat it as a Cancel — and skip the `Prompt to remove plan file` task (there's nothing to remove).
 
 If **Run**: `XcodeRead xcode-security-audit-plan.md`. Parse:
 - Each `- [x]` or `- [X]` bullet is a checked item; the item name is the bold portion (between `**…**`).
+- A bold bullet with **no** checkbox (e.g. `- **Enhanced Security** …`, `- **Warnings** …`) is a group heading, not a checkable item. It creates no task of its own — its checked sub-items drive the work. Do not treat it as checked or unchecked.
 - Items written as `- [ ]` and items deleted from the file are skipped — both produce identical skip behavior.
 - Under the "Decision document" heading, the value after `Path:` is the decision document location.
 
 Create the fine-grained tasks listed in **Track Progress**:
 
 - For each `Apply Enhanced Security entitlements to <target>` task, copy the per-target delta from the corresponding `Audit <target>` task's description (`Category:`, `Entitlements path:`, `Missing entitlements:`) into the apply task's own description so Phase 5 reads from one place.
+- The **Warnings** parent line is a heading, not a task — it produces no task of its own. Each checked **Warnings** sub-item creates its corresponding apply task: **Compiler warnings** → `Apply Compiler Warnings`, **Static analyzer warnings** → `Apply Static Analyzer Warnings`, **Clang-tidy warnings** → `Apply Clang-Tidy Warnings`. This mirrors how the **Enhanced Security** parent maps to its sub-item tasks.
 - To create the `Inquire about <MACRO> on <target>` tasks (only when **Inquire about disabled settings** is checked), `TaskList` the `Audit <target>` tasks and `TaskGet` each; the `Deliberately-disabled:` line of each description lists that target's candidate rows. Apply the Phase-6 exclusions documented below when filtering.
 - When creating the `Report and update decision document` task, put the parsed decision-document path in its description so Phase 7 reads it from there.
 
@@ -347,22 +359,31 @@ The user already approved this in "Phase 4" — no further prompt is needed.
 
 The per-target `Apply Enhanced Security entitlements` tasks dominate Phase-5 wall time on multi-target projects. Each one edits the target's `.entitlements` plist.
 
-#### Step 2: Basic Clang Safety Warnings
+#### Step 2: Warnings
 
-If pure Swift, skip. For each setting, consult that target's `Audit <target>` task description (the Audit-table block) and skip individual settings whose row is `already hardened`. Otherwise apply target-level (see "How to apply build settings"):
+If pure Swift, skip the whole step. This step covers three groups, each gated on its own plan sub-item — **Compiler warnings**, **Static analyzer warnings**, and **Clang-tidy warnings**. Skip any group whose sub-item was unchecked or deleted. For every setting, consult that target's `Audit <target>` task description (the Audit-table block) and skip individual settings whose row is `already hardened`. Otherwise apply target-level (see "How to apply build settings").
+
+**Compiler warnings** (fire on every build):
 
 - `GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR` — non-void function returning without a value is undefined behavior; callers read whatever happened to be in the return register. Promoting to error catches this at compile time. `YES_ERROR` is the documented Xcode value for "treat this specific warning as an error" — it does not flip every warning into an error.
 - `GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE` — reading uninitialized stack values leaks prior frame contents and lets attackers control flow with stale data. Aggressive mode warns on more cases (e.g., conditional initialization paths).
 - `CLANG_WARN_IMPLICIT_FALLTHROUGH = YES` — implicit `switch` fallthrough is one of the most common sources of branching bugs; the warning forces an explicit `[[fallthrough]]` / `__attribute__((fallthrough))` whenever intentional.
 - `GCC_WARN_64_TO_32_BIT_CONVERSION = YES` — silent narrowing of `size_t`/pointers to `int` is a classic source of integer-truncation vulnerabilities (length checks pass on the wide value, then fail open on the narrow one).
 - `GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES` (C/ObjC only) — implicit declarations were removed in C99 and produce wrong calling conventions and wrong return-type assumptions in modern C. Always an error.
+
+The two `YES_ERROR` / `… ERRORS = YES` settings are scoped: they only promote *their own specific warning* to an error, not all warnings in the project.
+
+**Static analyzer warnings** (run during *Build and analyze*, not regular builds):
+
 - `CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES` — floating-point loop counters can stall or overshoot due to rounding; the analyzer flags loops where this can become a security-relevant bug.
 - `CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES` — `rand()` / `random()` are predictable PRNGs unsuitable for any security purpose; analyzer flags their use so callers switch to `arc4random_uniform` or `SecRandomCopyBytes`.
 - `CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES` — flags `strcpy`, `strcat`, and friends that are inherently unsafe; callers should switch to size-bounded variants (`strlcpy`, `strlcat`, `snprintf`).
 
-The two `YES_ERROR` / `… ERRORS = YES` settings are scoped: they only promote *their own specific warning* to an error, not all warnings in the project.
+**Clang-tidy warnings** (clang-tidy-integrated checks that are part of the clang static analyzer; they fire only during *Build and analyze* / `clang --analyze`, never on normal builds, so there is no build-break risk and adopters need to install nothing extra):
 
-Report briefly: "Enabled additional compiler warnings."
+- `CLANG_TIDY_BUGPRONE_REDUNDANT_BRANCH_CONDITION = YES` — flags a branch condition that is redundant with an enclosing condition, a common sign of a copy-paste or logic error.
+
+Report briefly per group, e.g.: "Enabled compiler warnings, static analyzer warnings, and clang-tidy warnings." — naming only the groups actually applied.
 
 #### Step 3: Hardware Memory Tagging
 

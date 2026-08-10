@@ -8,7 +8,11 @@ Complete reference for the security build settings and entitlements managed by t
 
 **Filtering recipe.** `scripts/filter_build_settings.py` filters `GetTargetBuildSettings` output to entries in this reference; it derives its filter regex from this file at runtime by extracting backtick-quoted macro names. Adding a new setting here automatically extends the filter. See `references/reading-build-settings.md` for usage.
 
-## Basic Clang Safety Warnings — Always Enable
+## Warnings — Always Enable
+
+### Compiler Warnings
+
+Fire on every build.
 
 | Build Setting | Value | CLI Flag | Scope | Why Safe |
 |---|---|---|---|---|
@@ -17,9 +21,24 @@ Complete reference for the security build settings and entitlements managed by t
 | `CLANG_WARN_IMPLICIT_FALLTHROUGH` | `YES` | `-Wimplicit-fallthrough` | C/C++/ObjC/ObjC++ | Catches logic bugs in switch |
 | `GCC_WARN_64_TO_32_BIT_CONVERSION` | `YES` | `-Wshorten-64-to-32` | C/C++/ObjC/ObjC++ | Truncation is a real issue |
 | `GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS` | `YES` | `-Werror=implicit-function-declaration` | C/ObjC | Implicit decls cause wrong return types |
+
+### Static Analyzer Warnings
+
+Run during *Build and analyze*, not regular builds.
+
+| Build Setting | Value | CLI Flag | Scope | Why Safe |
+|---|---|---|---|---|
 | `CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER` | `YES` | checker: `security.FloatLoopCounter` | C/C++/ObjC/ObjC++ | Low false-positive rate |
 | `CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND` | `YES` | checker: `security.insecureAPI.rand` | C/C++/ObjC/ObjC++ | Flags insecure random |
 | `CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY` | `YES` | checker: `security.insecureAPI.strcpy` | C/C++/ObjC/ObjC++ | Flags unsafe string ops |
+
+### Clang-Tidy Warnings
+
+Clang-tidy-integrated checks that are part of the clang static analyzer; they fire only during *Build and analyze* (or `clang --analyze`), never on normal builds. There is no build-break risk from enabling them, and adopters do not need to install anything extra.
+
+| Build Setting | Value | CLI Flag | Scope | Why Safe |
+|---|---|---|---|---|
+| `CLANG_TIDY_BUGPRONE_REDUNDANT_BRANCH_CONDITION` | `YES` | static analyzer check (integrated from clang-tidy): `bugprone-redundant-branch-condition` | C/C++/ObjC/ObjC++ | Runs during Build and analyze, not regular builds |
 
 ## Enhanced Security — Capability
 
@@ -70,7 +89,6 @@ These are managed per-target in each target's `.entitlements` file. See `enhance
 |---|---|---|---|---|
 | `CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION` | `YES` | `-Wconversion` | C/C++/ObjC/ObjC++ | May be noisy in some codebases |
 | `CLANG_ANALYZER_SECURITY_BUFFER_OVERFLOW_EXPERIMENTAL` | `YES` | checker: `security.ArrayBound` | C/C++/ObjC/ObjC++ | Higher false-positive rate |
-| `CLANG_TIDY_BUGPRONE_REDUNDANT_BRANCH_CONDITION` | `YES` | static analyzer check (integrated from clang-tidy): `bugprone-redundant-branch-condition` | C/C++/ObjC/ObjC++ | Code quality — runs during Build and analyze, not regular builds |
 | `CLANG_WARN_ASSIGN_ENUM` | `YES` | `-Wassign-enum` | C/C++/ObjC/ObjC++ | Code quality |
 | `GCC_WARN_SIGN_COMPARE` | `YES` | `-Wsign-compare` | C/C++/ObjC/ObjC++ | Code quality |
 

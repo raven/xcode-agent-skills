@@ -1,6 +1,6 @@
 ---
 name: device-interaction
-description: "Verify iOS app behavior on device or simulator via screenshots, UI hierarchy, and touch interactions."
+description: "Verify app behavior on device or simulator via screenshots, UI hierarchy, and touch interactions."
 ---
 # Device Interaction
 
@@ -76,7 +76,7 @@ UIView {{100, 200}, {60, 30}}, hitPoint: {130.0, 215.0}
 - `{50, 30}` - width and height
 - `hitPoint: {125.0, 215.0}` - calculated hitPoint point (best for tapping)
 
-**Always prefer the hitPoint coordinates for touch events.**
+**Always prefer the hitPoint coordinates for touch events.** Only after tapping a hitPoint and confirming (via recapture) it had no effect may you fall back to a raw screenshot-estimated position.
 
 Warning: Elements marked `isRemoteLeafPlaceholder` do not report child elements — interacting with them requires falling back to screenshot-estimated coordinates.
 
@@ -120,9 +120,11 @@ The `interactionCommand` parameter accepts a command syntax:
 | `drag <x1> <y1> <x2> <y2> [holdDuration] [moveDuration]` | Drag-and-drop: press-and-hold at (x1,y1) then slowly move to (x2,y2). Use for reordering lists or drag-and-drop targets |
 | `mt [x1 y1, ...] dur [x1 y1, ...] dur ...` | Multi-touch sequence. Each `[...]` keyframe lists touch positions (`x y`). The duration after each block is the travel time to the next keyframe; for the last block it is the hold time before lifting. A finger ends when its slot is an empty comma entry (e.g. `[, x y]`) **or** when the frame has fewer entries than the finger's index — both are equivalent. A finger that reappears in a later keyframe after lifting starts a new tap. |
 | `b h/p/u/d [duration]` | Hardware button: h=Home, p=Power, u=VolUp, d=VolDown |
+| `b c/s/a [duration]` | **watchOS only.** c=Digital Crown press, s=side button, a=Action button (some devices only) |
 | `sender keyboard kbd <text>` | Type text; **must be the last command in the chain** — all content after `kbd ` is taken verbatim (multiple spaces preserved). For special characters use `\u{XXXX}` Unicode escapes: `\u{000A}` (return/newline), `\u{0009}` (tab) |
 | `w duration` | Wait for a duration without any work |
-| `orientation faceDown/faceUp/landscapeLeft/landscapeRight/portrait/portraitUpsideDown` | Set device orientation |
+| `orientation faceDown/faceUp/landscapeLeft/landscapeRight/portrait/portraitUpsideDown` | Set device orientation (iOS only) |
+| `c <rotations>` | **watchOS only.** Rotate the Digital Crown; sign sets direction, 1.0 = one full revolution |
 
 **Examples:**
 - `"t 100 200"` - Tap at (100, 200)
@@ -136,18 +138,23 @@ The `interactionCommand` parameter accepts a command syntax:
 - `"b h"` - Press home button
 - `"b h b h"` - Press home button twice to go to the app switcher
 - `"b h w 0 b h"` - Wake and unlock a device (non-passcode devices only)
+- `"b c"` - watchOS: press the Digital Crown
+- `"b s"` - watchOS: press the side button
+- `"b a"` - watchOS: press the Action button (some devices only)
 - `"sender keyboard kbd hello world"` - Type text with spaces
 - `"sender keyboard kbd hello   world"` - Type text preserving multiple spaces
 - `"sender keyboard kbd submit\u{000A}"` - Type text then press Return/submit
 - `"w 0.3"` - Wait for 0.3s
 - `"orientation landscapeLeft"` - Rotate device to landscape
+- `"c 1.0"` - watchOS: rotate the Digital Crown one full turn (e.g. scroll a list)
+- `"c -0.5"` - watchOS: rotate the crown half a turn the other way
 
 ## Standard Subagent Workflow
 
 Before any interaction, always capture and read the hierarchy (and screenshot). After any interaction, capture again and verify the result. For complex components (like toggles or switches), look at nested elements (like `Switch` or `Slider`) — nearby elements might correspond to the actual control. When done, report findings to the main agent.
 
 - To capture without interacting, use DeviceEventSynthesize with an empty interactionCommand.
-- Never guess positions from screenshots alone — always use hierarchy hitPoint coordinates.
+- Never guess positions from screenshots alone — use hierarchy hitPoint coordinates; screenshot estimation is only a fallback after a hitPoint is tried and fails.
 - If not confident or thumbnail resolution is insufficient, analyze the full-size screenshot.
 
 ## Timing and Retries
