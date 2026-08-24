@@ -1,6 +1,6 @@
 # German (de) — Software String Localization Style Guide
 
-- **Informal address ("du")**: Users are addressed informally with "du" in lowercase ("du", "dein", "ihr", "euch" — never capitalized). Legacy projects using formal "Sie" should not be switched.
+- **Informal address ("du")**: Users are addressed informally with "du" in lowercase ("du", "dein", "ihr", "euch" — never capitalized).
 
 - **Imperative vs. infinitive in UI**: Strings ending with a period use the imperative form ("Bearbeite das Bild."), while strings without a period use the infinitive ("Bild bearbeiten"). This single punctuation cue determines the verb form.
 
@@ -14,7 +14,7 @@
 
 - **No genitive-s on product names**: Never add a genitive -s to Apple product names or brand names. Use "von" instead: "Das neue iPhone von Apple" (not "Apples neues iPhone"), "die Seitentaste des iPhone" (not "des iPhones").
 
-- **Variables with "von" for possessives**: For `%@'s` patterns, prefer "iPhone von %@" over "%@s iPhone" to avoid issues with names ending in s/x/z. Use the -s form only when space is critical. When reordering variables, add positional markers: `$1%@`, `$2%@`.
+- **Variables with "von" for possessives**: For `%@'s` patterns, prefer "iPhone von %@" over "%@s iPhone" to avoid issues with names ending in s/x/z. Use the -s form only when space is critical. When reordering variables, add positional markers: `%1$@`, `%2$@`.
 
 - **Ellipsis with non-breaking space**: In software, an ellipsis indicates a process ("Laden …" not "Wird geladen") and is always preceded by a non-breaking space. Also use ellipsis to signal that an action leads to a follow-up dialog, even if the source omits it.
 
