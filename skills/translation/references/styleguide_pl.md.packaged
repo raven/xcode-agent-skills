@@ -66,11 +66,10 @@
   - *Source:* "After loading the data, press Return." → *Target:* "Po wczytaniu danych naciśnij klawisz Return." (no comma after adverbial)
   - *Source:* "Do task one, two, and three." → *Target:* "Wykonaj czynność pierwszą, drugą i trzecią." (no comma before i)
 
-- **Quotation Marks — Use Polish Lower-Upper Style**: Where technically possible, use Polish curly lower-upper quotation marks („” — opener \u201E, closer \u201D). Use quotation marks for concepts and terms, not for UI labels. In help files and documentation, do not use quotes when referring to UI labels unless the label is all-lowercase and indistinguishable from flowing text.
+- **Quotation Marks — Use Polish Lower-Upper Style**: Where technically possible, use Polish curly lower-upper quotation marks („” — opener \u201E, closer \u201D). Use quotation marks for concepts and terms, not for UI labels.
   - *Source:* "The concept of \u201Cprivacy\u201D" → *Target:* "Pojęcie \u201Eprywatności\u201D"
 
-- **Colon — Lowercase Word Follows in Software**: In software strings, the word following a colon is written in lowercase (e.g., 'Test „ślepy”: naciśnij każdy klawisz 1 raz'). In documentation a colon is often used to introduce a software UI label, in which case the label keeps its original capitalization.
-  - *Source:* "Make changes: Tap Customize." → *Target:* "Wprowadzanie zmian: Stuknij w Dostosuj." (documentation — UI label kept) / "Test: naciśnij OK." (software — lowercase)
+- **Colon — Lowercase Word Follows**: The word following a colon is written in lowercase (e.g., 'Test „ślepy”: naciśnij każdy klawisz 1 raz').
 
 - **Dash Usage — Hyphen, En-Dash, and Em-Dash**: Polish uses three distinct dash characters. Use a hyphen (-) to join words (biało-czerwony) or numbers with words (32-bitowy). Use an en-dash (–) for value ranges (lata 2012–2013) and as a minus sign. Use an em-dash (—) for pauses or separated phrases; never begin a line with an em-dash — always precede it with a non-breaking space.
   - *Source:* "years 2012–2013 / black-and-white / 32-bit" → *Target:* "lata 2012–2013 / czarno-biały / 32-bitowy"
@@ -116,9 +115,6 @@
 - **Callouts: Remove Final Full Stop**: Callouts may be descriptive, instructional, or informative — style varies by context. Regardless of source style, drop the trailing full stop (only on the last sentence in multi-sentence callouts). Other final punctuation, such as ellipses or question marks, is kept.
   - *Source:* "Tap to begin." → *Target:* "Stuknij, aby rozpocząć"
 
-- **Line Breaks: Translation No Longer Than Source**: If you need to insert manual line breaks for layout, ensure no translated line is longer than the longest line in the source string.
-  - *Source:* "Two-line\nsource string" → *Target:* "Dwuwierszowy\nciąg źródłowy" (each line ≤ longest source line)
-
 - **Submenu, Radio, and Dropdown Grammatical Continuation**: When a submenu item, radio button, or dropdown option is a grammatical and semantic continuation of its parent label, render it lowercase and matching the parent's grammar. Treat 'standalone' items (typically separated by a horizontal line in the UI) as nominative-case, capitalized phrases.
   - *Source:* "Show: [All / Recent / None]" → *Target:* "Pokazuj: wszystko / ostatnie / brak" (lowercase continuation)
 
@@ -142,11 +138,6 @@
 
 - **Preserve and Reorder Variables Correctly**: Variables must be kept exactly as they appear in the source. When Polish word order requires reordering, number all variables using n$ index syntax (%1$@, %2$@) before rearranging. Do not change a period to a comma inside a numeric format specifier (e.g., %.1f GB) — decimal point changes are handled by the software.
   - *Source:* "Text %@ text %@ text %@." → *Target:* "Tekst %1$@ tekst %3$@ tekst %2$@." (when 2nd and 3rd variables must be swapped)
-
-## Documentation
-
-- **Software References in Help and Documentation**: Always quote UI labels literally — especially when they're emphasized graphically (bold, italics). For variable label references like 'Edit X documents', use the plural variant in translation and the genitive plural ('many') form. Long labels containing commas may be enclosed in quotes for legibility.
-  - *Source:* "Edit X document(s)" → *Target:* "Edytuj X dokumentów" (genitive plural, 'many' form)
 
 ## Diversity And Inclusion
 

@@ -31,9 +31,7 @@
 
 ## Addresses
 
-- **Canadian Address Format**: Follow the Canadian address convention: Title/First Name/Last Name, then company, then house number followed by street type and name, then city (province) and postal code in A1A 1A1 format with a non-breaking space between the third and fourth characters.
-  - *Source:* "904 Saint-Urbain Street, Montreal, Quebec H2Z 1K4" → *Target:* "904, rue Saint-Urbain
-    Montréal (Québec) H2Z 1K4"
+- **Canadian Address Format**: Follow the Canadian address convention: Title/First Name/Last Name, then company, then house number followed by street type and name, then city (province) and postal code in A1A 1A1 format with a non-breaking space between the third and fourth characters. Example format: `904, rue Saint-Urbain, Montréal (Québec) H2Z 1K4`.
 
 ## Numerals
 

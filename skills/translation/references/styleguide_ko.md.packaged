@@ -135,6 +135,5 @@
 
 ## Standardized Translations
 
-- **Welcome Translations**: Use the standardized translation for 'Welcome' based on context: '~ 시작하기' for software menus/titles, '~의 사용을 환영합니다.' for phrases and documents, and '환영합니다' for the TOC title in User Guides and Help.
-  - *Source:* "Welcome" → *Target:* "환영합니다"
+- **Welcome Translations**: Use the standardized translation for 'Welcome' based on context: '~ 시작하기' for software menus/titles and '~의 사용을 환영합니다.' for phrases.
   - *Source:* "Welcome to Game Center" → *Target:* "Game Center 시작하기"

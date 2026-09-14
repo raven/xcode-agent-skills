@@ -28,7 +28,7 @@
 
 - **Avoid "and/or"**: Rewrite to avoid the construction — "document and app icons", not "document and/or app icons".
 
-- **Avoid abbreviations and Latin shortcuts**: Don’t introduce abbreviations to save space; if a string is too long, make a note about a UI improvement rather than abbreviate. Avoid Latin abbreviations ("for example", not "e.g."; "and so on", not "etc."; "that is", not "i.e."). Spell out an acronym on first occurrence with the acronym in parentheses, unless the acronym is far more familiar than the spelled-out form.
+- **Avoid abbreviations and Latin shortcuts**: Don’t introduce abbreviations to save space; if a string is too long, make a note about a UI improvement rather than abbreviate. Avoid Latin abbreviations ("for example", not "e.g."; "and so on", not "etc."; "that is", not "i.e."). Keep an acronym as the source uses it; if the source pairs it with a spelled-out form, keep that, and don't add an expansion the source lacks or drop one it has.
 
 ## Capitalization
 

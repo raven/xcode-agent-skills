@@ -132,6 +132,9 @@
 - **Category Labels: Inline Features**: If a feature name appears inline and could cause grammatical ambiguity, wrap the feature name in double curly quotes (“ (\u201C) and ” (\u201D)) and attach the case marker to a helper word (என்பதை).
   - *Source:* "Tap \u201CNotifications\u201D to view alerts." → *Target:* "விழிப்பூட்டல்களைப் பார்க்க \u201Cஅறிவிப்புகள்\u201D என்பதைத் தட்டவும்."
 
+- **Inline Alt-Text Elements**: Do not translate the structural tags placed inside angle brackets (e.g., <AltText>). Also, as per Tamil style the text order can change, which can result in a change in the order of inline Alt-text elements as per the sentence requirements.
+  - *Source:* "Tap <AltText>Settings button</AltText> and choose your file." → *Target:* "<AltText>Settings button</AltText>-ஐத் தட்டி உங்கள் கோப்பைத் தேர்வுசெய்யவும்."
+
 ## Trademarks And Product Names
 
 - **Do Not Translate or Transliterate Trademarks**: Do not translate or transliterate trademarks, trademarked slogans, or product names.
@@ -143,8 +146,3 @@
 
 - **People-First Language for Disabilities**: Use people-first translation when referring to people with disabilities. Describe individuals as people before mentioning their disability. Avoid defining or derogatory terms like கண் இல்லாதவர், செவிடு, or ஊனமுற்றோர். Instead, use respectful terms like பார்வைத் திறன் குறைபாடு உடையவர், செவித்திறன் குறைபாடு உடையவர், or மாற்றுத்திறனாளி.
   - *Source:* "A person who uses a wheelchair" → *Target:* "மாற்றுத்திறனாளி"
-
-## Documentation
-
-- **Inline Alt-Text Elements**: Do not translate the structural tags placed inside angle brackets (e.g., <AltText>). Also, as per Tamil style the text order can change, which can result in a change in the order of inline Alt-text elements as per the sentence requirements.
-  - *Source:* "Tap <AltText>Settings button</AltText> and choose your file." → *Target:* "<AltText>Settings button</AltText>-ஐத் தட்டி உங்கள் கோப்பைத் தேர்வுசெய்யவும்."

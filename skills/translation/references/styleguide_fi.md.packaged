@@ -94,10 +94,7 @@
 
 ## Names And Addresses
 
-- **Use Finnish Placeholder Names and Address Format**: Replace English placeholder names with Finnish equivalents. Keep John Appleseed in English as an exception. Use Finnish postal address conventions for sample addresses.
-  - *Source:* "Jane Doe" → *Target:* "Maija Meikäläinen"
-  - *Source:* "John Doe" → *Target:* "Matti Meikäläinen"
-  - *Source:* "123 Main Street, Anytown, State 12345" → *Target:* "Kauppakatu 5 C 24, 99999 Jokukylä"
+- **Use Finnish Placeholder Names and Address Format**: Replace English placeholder names with locally-appropriate Finnish names; keep John Appleseed in English as an exception. Use Finnish postal address conventions for sample addresses. Example format: `Kauppakatu 5 C 24, 99999 Jokukylä`.
 
 ## Variables
 

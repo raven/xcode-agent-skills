@@ -134,6 +134,9 @@
   - *Source:* "Devices" → *Target:* "ڈیوائس" (transliterated, singular)
   - *Source:* "Suggestions" → *Target:* "تجاویز" (translated, broken plural)
 
+- **Heading and Title Verbs (UI)**: Promotional or label headings use the imperative (Make = بنائیں). Welcome-screen headings should be creative, short, and formal.
+  - *Source:* "Make" → *Target:* "بنائیں"
+
 ## Variables
 
 - **Preserve and Reorder Variables Correctly**: Keep all variables exactly as in the source. When Urdu word order differs, number every variable using the n$@ format (%1$@, %2$@) so runtime substitution stays correct. Never change a period to a comma inside a numeric format variable like %.1f.
@@ -165,17 +168,12 @@
 
 ## Software
 
-- **Software String Integrity (Spaces, Periods, Returns)**: Preserve leading and trailing spaces (needed for concatenation). Do not use double spaces between sentences. Do not add a period if the source has none. Keep carriage returns/line breaks; translated lines must not exceed the longest source line.
+- **Software String Integrity (Spaces, Periods, Returns)**: Preserve leading and trailing spaces (needed for concatenation). Do not use double spaces between sentences. Do not add a period if the source has none. Keep carriage returns/line breaks.
   - *Source:* "Updating… " → *Target:* "اپڈیٹ کیا جا رہا ہے… " (preserve trailing space, no added period)
 
 - **App Names — Singular Form; Some Names Not Translated**: Translate/transliterate app names in the singular using the most appropriate variant. Do not translate trademarked product names; keep them in their original form, or as the developer's comment directs.
   - *Source:* "iTunes" → *Target:* "iTunes" (do not translate)
   - *Source:* "Photos" → *Target:* "تصویر" (singular)
-
-## Documentation
-
-- **Gerund/Infinitive Verbs in Headings and Titles**: In documentation headings/titles, render verbs in gerund/infinitive form (Create = بنانا, Lock = لاک کرنا). Exception: promotional/label headings use the imperative (Make = بنائیں). Welcome-screen headings should be creative, short, and formal.
-  - *Source:* "Create a custom Lock Screen" → *Target:* "حسب خواہش لاک اسکرین بنانا"
 
 ## Emoji
 

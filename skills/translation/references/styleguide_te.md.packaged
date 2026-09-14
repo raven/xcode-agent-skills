@@ -2,7 +2,7 @@
 
 ## Escaping Curly Quotes And Apostrophes
 
-- **Escape every curly glyph inside a string**: Telugu uses curly double quotation marks “ (\u201C) and ” (\u201D) for quoting UI strings, single curly quotation marks ‘ (\u2018) and ’ (\u2019) for UI-element references in documentation running text, and the curly apostrophe ’ (\u2019).
+- **Escape every curly glyph inside a string**: Telugu uses curly double quotation marks “ (\u201C) and ” (\u201D) for quoting UI strings, single curly quotation marks ‘ (\u2018) and ’ (\u2019) for UI-element references in running text, and the curly apostrophe ’ (\u2019).
   - *Source:* "Please see the \u201CFAQ\u201D section." → *Target:* "\u201CFAQ\u201D విభాగాన్ని చూడండి."
 
 ## Abbreviations
@@ -59,21 +59,12 @@
 - **Use Passive Voice for Gender Neutrality**: When translating any string where active voice would result in a gendered construction, use passive voice to maintain gender neutrality. This ensures the translation is valid for both male and female readers without specifying gender. Passive voice is especially recommended when the sentence has no explicit subject.
   - *Source:* "The app can recognize your voice" → *Target:* "యాప్ ద్వారా మీ వాయిస్ గుర్తించబడుతుంది"
 
-## Documentation
-
-- **Match UI Terminology in Documentation**: When documentation refers to a UI element, use the same Telugu term the software already uses for it, rather than coining a new one.
-  - *Source:* "Screen Time" → *Target:* "స్క్రీన్ టైమ్"
-
-- **Use Infinitive Verb Form for Documentation Headings and Titles**: In documentation headings and section titles, use the infinitive (gerund nominalized) verb form ending in డం rather than the imperative form ending in ండి. This applies to documentation such as user guides, help articles, and tutorials.
-  - *Source:* "Share a file" → *Target:* "ఫైల్‌ను షేర్ చేయడం"
-  - *Source:* "Setting up cellular service" → *Target:* "మొబైల్ సర్వీస్‌ను సెటప్ చేయడం"
-
 ## General Advice
 
-- **Use Single Curly Quotes When Referencing UI Elements in Documentation**: When citing a UI element such as a feature name, button, or page title in Software/Documentation running text, wrap it in single curly quotes. This helps differentiate UI references from surrounding text.
+- **Use Single Curly Quotes When Referencing UI Elements**: When citing a UI element such as a feature name, button, or page title in running text, wrap it in single curly quotes. This helps differentiate UI references from surrounding text.
   - *Source:* "To edit a query, click \u201CEdit\u201D." → *Target:* "క్వెరీని ఎడిట్ చేయడానికి \u2018ఎడిట్\u2019పై క్లిక్ చేయండి." (UI reference wrapped in single curly quotes)
 
-- **Translate Feature Descriptions and Explanations in a Descriptive Tone**: When descriptions or explanations for features, options, etc. are complete sentences with indicative verbs, translate them in a descriptive (declarative) tone in Telugu, matching the context. Do not use imperative forms for descriptive strings that explain what a feature does. This applies to both software and documentation deliverables.
+- **Translate Feature Descriptions and Explanations in a Descriptive Tone**: When descriptions or explanations for features, options, etc. are complete sentences with indicative verbs, translate them in a descriptive (declarative) tone in Telugu, matching the context. Do not use imperative forms for descriptive strings that explain what a feature does.
   - *Source:* "Play music based on mood." → *Target:* "మూడ్‌కు తగినట్లు సంగీతం ప్లే చేయబడుతుంది."
 
 ## Grammar

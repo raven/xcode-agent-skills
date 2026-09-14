@@ -2,7 +2,7 @@
 
 ## Escaping Curly Quotes And Apostrophes
 
-- **Escape every curly glyph inside a string**: Catalan uses guillemets « (\u00AB) and » (\u00BB) for quoting and the curly apostrophe ’ (\u2019) for elision and possessives.
+- **Escape every curly glyph inside a string**: Catalan uses curly double quotation marks “ (\u201C) and ” (\u201D) for quoting and the curly apostrophe ’ (\u2019) for elision and possessives.
 
 ## Tone And Voice
 
@@ -36,8 +36,7 @@
 
 ## Addresses
 
-- **Catalan Address Format**: When localizing postal addresses, follow Catalan conventions: translate generic street types ("Main Street" → "Carrer Major", "Avenue" → "Avinguda") and use Catalan order (street name and number, then postal code and locality, then province). Do not leave English sample data in production strings.
-  - *Source:* "123 Main Street, Anytown, State ZIP" → *Target:* "Carrer Major, 123, Localitat, CP Província"
+- **Catalan Address Format**: When localizing postal addresses, follow Catalan conventions: translate generic street types ("Main Street" → "Carrer Major", "Avenue" → "Avinguda") and use Catalan order (street name and number, then postal code and locality, then province). Do not leave English sample data in production strings. Example format: `Carrer Major, 123, Localitat, CP Província`.
 
 ## Interface Elements
 
@@ -113,7 +112,7 @@
   - *Source:* "Memory Creation is Unavailable" → *Target:* "Creació de records no disponible"
   - *Source:* "Review Activity History" → *Target:* "Revisió de l\u2019historial d\u2019activitat"
 
-- **Descriptions and explanations**: Translate full-sentence descriptions and explanations with the imperative form. Use the indicative only in documentation contexts where the user is not being addressed.
+- **Descriptions and explanations**: Translate full-sentence descriptions and explanations with the imperative form.
   - *Source:* "Personalize Mac with new looks for app icons." → *Target:* "Personalitza el Mac amb estils nous per a les icones de les apps."
   - *Source:* "Opens Braille Access and allows Braille input using a keyboard." → *Target:* "Obre l\u2019accés amb la pantalla Braille i permet l\u2019entrada Braille amb el teclat."
 
@@ -141,20 +140,20 @@
 
 ## Punctuation
 
-- **Quotation marks**: Use Catalan angle quotation marks « and » around multi-word UI items when they are referenced rather than used descriptively. Quotation marks are not necessary for app names, email addresses, utility names, or operating-system update names, and are not used when UI options are referenced through a path with ">".
-  - *Source:* "Click Agree or Learn More." → *Target:* "Fes clic a «Accepta» o a «Més informació»."
+- **Quotation marks**: Use Catalan curly double quotation marks “ and ” around multi-word UI items when they are referenced rather than used descriptively. Quotation marks are not necessary for app names, email addresses, utility names, or operating-system update names, and are not used when UI options are referenced through a path with ">".
+  - *Source:* "Click Agree or Learn More." → *Target:* "Fes clic a \u201CAccepta\u201D o a \u201CMés informació\u201D."
 
 - **Units**: Do not convert imperial measurements to metric. When the English measurement is purely illustrative (a rounded ballpark figure rather than a precise spec), substitute a comparable rounded Catalan figure instead of a literal conversion.
   - *Source:* "Hold iPhone 10 to 20 inches from your face" → *Target:* "Mantén l\u2019iPhone a una distància de 10 a 20 polzades de la cara."
 
 - **Spacing**: There must be a non-breaking space between the number and the unit symbol.
-  - *Source:* "100% zoom level" → *Target:* "Nivell del zoom del 100 %"
+  - *Source:* "100% zoom level" → *Target:* "Nivell del zoom del 100\u00A0%"
 
 - **Exclamation marks**: The exclamation marks used in some English sentences are generally not needed in Catalan.
   - *Source:* "It's a Draw!" → *Target:* "Empat"
 
 - **Punctuation within quotes**: Place the period (or other terminal punctuation) outside the closing quotation mark, even when the source text places it inside. This follows standard Catalan/European typography.
-  - *Source:* "Select \u201CStart automatically.\u201D" → *Target:* "Selecciona «Inicia automàticament»."
+  - *Source:* "Select \u201CStart automatically.\u201D" → *Target:* "Selecciona \u201CInicia automàticament\u201D."
 
 - **Punctuation within parenthesis**: A full sentence within a parenthesis should have the full stop outside of the parenthesis.
   - *Source:* "(This may take a few moments.)" → *Target:* "(El procés pot tardar uns minuts)."

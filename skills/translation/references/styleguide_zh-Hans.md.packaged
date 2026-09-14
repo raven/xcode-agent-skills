@@ -20,7 +20,7 @@
 
 ## Acronyms
 
-- **Retain English Acronyms Unless a Standard Chinese Equivalent Exists**: Keep acronyms in English when their meaning is apparent to users (e.g., SIM). Use Chinese for terms where a well-known standard translation exists (e.g., TV to 电视, HD to 高清). In documentation, spell out the full Chinese term followed by the English acronym in parentheses on first use.
+- **Retain English Acronyms Unless a Standard Chinese Equivalent Exists**: Keep acronyms in English when their meaning is apparent to users (e.g., SIM). Use Chinese for terms where a well-known standard translation exists (e.g., TV to 电视, HD to 高清). If the source pairs an acronym with a spelled-out form, translate that form; don't add an expansion the source doesn't have.
   - *Source:* "TV" → *Target:* "电视"
 
 ## Date And Time
@@ -30,8 +30,8 @@
 
 ## Measurements
 
-- **Do Not Convert Measurements; Put Metric First in Documentation**: Do not convert imperial measurements to metric in software strings. In documentation where both units appear in the source, always place the metric unit first in the translation. Never use the inch symbol as an abbreviation.
-  - *Source:* "minimum separation distance of 8 inches (20 cm)" → *Target:* "至少20厘米（8英寸）的距离"
+- **Do Not Convert Measurements**: Do not convert imperial measurements to metric in software strings. Never use the inch symbol as an abbreviation.
+  - *Source:* "minimum separation distance of 8 inches (20 cm)" → *Target:* "至少8英寸（20厘米）的距离"
 
 - **Use English Symbols for Technical Units**: For units with long Chinese names, retain the English symbol or abbreviation. Units including KB, MB, GB, Hz, kHz, MHz, dB, kbps, Mbps, Gbps, and others do not need to be localized when they appear as abbreviations.
   - *Source:* "%@ hrs %@ mins (at %@ kB/s)" → *Target:* "%@小时%@分钟（速度：%@ kB/秒）"

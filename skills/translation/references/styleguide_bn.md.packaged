@@ -93,18 +93,6 @@
 - **Conjunction Usage (এবং vs ও)**: Use ও to join nouns (or short noun-like elements) within a clause. Use এবং to join independent clauses or full sentences. Do not add a comma before either conjunction in the target text.
   - *Source:* "macOS and iOS both have the same features and these are useful." → *Target:* "macOS ও iOS উভয়েরই একই ফিচার আছে এবং সেগুলি উপকারী।"
 
-- **Treat Documentation Headings as Nouns**: In documentation (like User Guides), headings should generally be treated as nouns by adding 'করা' instead of using the imperative verb form.
-  - *Source:* "Turn on and set up iPhone" → *Target:* "iPhone চালু করা ও সেট আপ করা"
-
-- **Documentation Headings as Capabilities**: For main headings describing a feature's capability, use the auxiliary verb 'করতে পারেন' rather than the imperative form.
-  - *Source:* "Use Dual SIM on iPhone" → *Target:* "iPhone-এ দুটি SIM ব্যবহার করতে পারেন"
-
-- **Introductory Headings as Imperative Verbs**: As an exception, headings in introductory sections (e.g., 'Introducing iPhone') should be translated using the imperative verb form to sound engaging.
-  - *Source:* "Capture the moment" → *Target:* "মুহূর্ত ধরে রাখুন"
-
-- **Use Interrogative Form for Instructional Headings**: In documentation, if a heading or subheading precedes step-by-step instructions, it must be translated as an interrogative sentence using 'কীভাবে' (how to) and ending with a question mark.
-  - *Source:* "Search with iPhone" → *Target:* "iPhone-এ কীভাবে সার্চ করবেন?"
-
 - **Maintain Parallel Flow in Lists**: List items must match the grammatical flow of the parent phrase in the source (conjugated, imperative, or infinitive). Use the imperative form for actionable list items.
   - *Source:* "Update your contact information" → *Target:* "আপনার কন্ট্যাক্টের তথ্য আপডেট করুন"
 

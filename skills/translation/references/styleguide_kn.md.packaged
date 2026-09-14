@@ -90,9 +90,6 @@
 
 ## Terminology
 
-- **Match UI Terminology Exactly in Documentation**: All references to UI elements in documentation must match the terminology used in the corresponding software exactly.
-  - *Source:* "Screen Time" → *Target:* "ಸ್ಕ್ರೀನ್ ಟೈಮ್"
-
 - **Prefer Transliteration Over Archaic Kannada for Technical Terms**: For technical terms that have become part of everyday speech, transliterate rather than translate. Use a natural Kannada term only when it is immediately clear to the target audience. Avoid archaic Sanskritized vocabulary that users will not recognize.
   - *Source:* "Password" → *Target:* "ಪಾಸ್‌ವರ್ಡ್" (not "ಗುಪ್ತಪದ")
   - *Source:* "Update" → *Target:* "ಅಪ್‌ಡೇಟ್" (not "ನವೀಕರಣ")

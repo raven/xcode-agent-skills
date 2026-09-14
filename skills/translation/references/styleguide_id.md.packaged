@@ -88,7 +88,7 @@
 
 ## General Advice
 
-- **Distinguish Nouns From Verbs in Translation**: English and Indonesian differ significantly in word formation, making it easy to confuse a verb for a noun. Always identify the grammatical role of the source word before translating. For documentation and help headings, use the gerund form rather than the imperative.
+- **Distinguish Nouns From Verbs in Translation**: English and Indonesian differ significantly in word formation, making it easy to confuse a verb for a noun. Always identify the grammatical role of the source word before translating.
   - *Source:* "Download" (noun) → *Target:* "Pengunduhan"
   - *Source:* "Download" (verb) → *Target:* "Unduh"
 

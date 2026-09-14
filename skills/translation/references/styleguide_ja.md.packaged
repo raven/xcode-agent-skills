@@ -157,9 +157,6 @@
 - **Corner brackets Exception: Tapbacks and Accessibility**: While double curly quotation marks (“ ”) are the standard for quoting UI elements in software, you must use corner brackets (「 」) as an exception when translating Messages Tapback reactions (e.g., 「ハート」).
   - *Source:* "You loved this" → *Target:* "あなたはこれに「ハート」と応答"
 
-- **Corner brackets in Documentation**: When translating for Help, User Guides, or Documentation, use LEFT CORNER BRACKET and RIGHT CORNER BRACKET to quote UI elements like app names, menus, and buttons. Do not use double curly quotation marks (“ ”) in this domain.
-  - *Source:* "Tap Save." → *Target:* "「保存」をタップします。"
-
 ## Terminology
 
 - **Press and hold Terminology**: "Press and hold", "Press & hold" and "Long press" should be translated as "長押し（する）" for consistency.

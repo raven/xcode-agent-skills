@@ -67,7 +67,7 @@
 - **Prefer Rewording Over Abbreviating**: To provide the best user experience, prefer shortening strings by rewording or removing redundant text rather than abbreviating words. Look at surrounding strings for context that may allow omission.
   - *Source:* "Description: Not available" → *Target:* "Ikke tilgængelig" (preferred over "Beskr.: Ikke tilgængelig")
 
-- **"vha." for "with/using"**: In online help and software, "vha." (ved hjælp af) is often used when the source says "with" or "using" to refer to performing an action by means of something.
+- **"vha." for "with/using"**: In software, "vha." (ved hjælp af) is often used when the source says "with" or "using" to refer to performing an action by means of something.
   - *Source:* "Connect using PPP" → *Target:* "Opret forbindelse vha. PPP"
 
 ## Acronyms
@@ -93,7 +93,7 @@
 
 ## Measurements
 
-- **Do Not Convert Imperial to Metric in Sentences**: Do not convert units such as inches to centimetres in software strings or sentences. In documentation where both are given in the source, include only the metric value in the Danish translation.
+- **Do Not Convert Imperial to Metric in Sentences**: Do not convert units such as inches to centimetres in software strings or sentences.
   - *Source:* "11\" MacBook Air" → *Target:* "11\" MacBook Air"
 
 ## Addresses
@@ -121,7 +121,7 @@
 - **Accent Signs — Avoid in General UI**: Do not use accent aigu in general UI translations. Exceptions: when a sentence could be misinterpreted (e.g. "én pris" vs. "en pris") and in VoiceOver strings where pronunciation requires the accent (e.g. "aktivér", "markér"). Siri strings always use accents.
   - *Source:* "Activate" → *Target:* "aktiver"
 
-- **Parentheses — Period Placement**: If a sentence ends after the closing parenthesis, place the period after it. If a whole sentence is in parentheses (common in help), place the period inside. Avoid putting whole sentences in parentheses — remove the parentheses instead.
+- **Parentheses — Period Placement**: If a sentence ends after the closing parenthesis, place the period after it. If a whole sentence is in parentheses, place the period inside. Avoid putting whole sentences in parentheses — remove the parentheses instead.
   - *Source:* "Setup is complete (see details)." → *Target:* "Indstillingen er fuldført (se detaljer)."
 
 - **Characters Used as Words — Translate & and #**: In Danish, translate "&" as "og" and "#" as "nummer".
@@ -146,6 +146,12 @@
 
 - **Tooltips — End with Full Stop**: Tooltips have limited space. Be concise and creative. Tooltips normally end with a full stop.
   - *Source:* "Opens the selected file." → *Target:* "Åbner det valgte arkiv."
+
+- **Capitalization — Proper Names Indefinite vs. Definite**: For tools or functions with a localized proper name, use either upper-case initial letter with indefinite form, or lower-case initial letter with definite form. Do not mix (e.g. "Åbn Indstillingsassistent" or "Åbn indstillingsassistenten", not "Åbn indstillingsassistent").
+  - *Source:* "Open Setup Assistant." → *Target:* "Åbn Indstillingsassistent."
+
+- **Touch and Hold**: Translate "Touch and hold" as "Hold en finger på…" or "Hold knappen nede…". Translate "Press xxx and hold down xxx" as "Tryk på og hold xxx nede".
+  - *Source:* "Touch and hold the icon." → *Target:* "Hold en finger på symbolet."
 
 ## Variables
 
@@ -183,9 +189,6 @@
 
 ## Software Formatting
 
-- **Line Breaks — Never Exceed Source Length**: If you add line breaks in your translation for layout reasons, ensure your translation lines are never longer than the longest line in the source string.
-  - *Source:* "Save your work now" → *Target:* "Gem dit arbejde nu"
-
 - **Line Breaks — No Space Around \n**: The text variable \n is used for non-breaking line breaks. There is no space around \n.
   - *Source:* "to\nManage" → *Target:* "til\nAdministration"
 
@@ -197,7 +200,7 @@
 - **Noun Inflections — Approved Spellings**: Use the approved inflections for common terms: e-mail/e-mails/e-mailene, højttaler/højttalere/højttalerne, album/album/albummene, app/apps/appsene, podcast/podcasts/podcastene.
   - *Source:* "emails" → *Target:* "e-mails"
 
-- **Consistent Terminology Across Software and Documentation**: Terminology must be kept consistent across software and documentation. References to software strings in documentation/help should always match the software translation. Software terminology always determines which translation to use.
+- **Consistent Terminology**: Keep terminology consistent across the app's strings — reuse the established software translation for a term rather than coining a new one.
   - *Source:* "Preferences" → *Target:* "Indstillinger"
 
 - **Third-Party Terms — Follow Their Danish Translations**: When referencing terms from non-Apple products (Facebook, Twitter, YouTube, Microsoft Windows, etc.), follow the translations used by those products in Danish.
@@ -210,26 +213,3 @@
 
 - **Chapter Numbering — Period Separator**: Use a period as the tiered numbering separator. Example: Kapitel 2, afsnit 1 is written as "2.1".
   - *Source:* "Chapter 2, Section 1" → *Target:* "2.1"
-
-## Documentation
-
-- **Documentation Headings — Sådan… Pattern**: Translate English "To [verb]:" headings as "Sådan [verb] du [object]:" in documentation. Headings are usually written in the imperative.
-  - *Source:* "To save your photo:" → *Target:* "Sådan gemmer du fotoet:"
-
-- **Documentation Instructions — Imperative + for at**: When English uses "To [verb], [imperative]." as an instruction (not a heading), translate using "[Imperative]… for at…" or "Hvis du vil…, skal du…" in Danish.
-  - *Source:* "To save your photo, click Save." → *Target:* "Klik på Gem for at gemme fotoet."
-
-- **Capitalization — Proper Names Indefinite vs. Definite**: For tools or functions with a localized proper name, use either upper-case initial letter with indefinite form, or lower-case initial letter with definite form. Do not mix (e.g. "Åbn Indstillingsassistent" or "Åbn indstillingsassistenten", not "Åbn indstillingsassistent").
-  - *Source:* "Open Setup Assistant." → *Target:* "Åbn Indstillingsassistent."
-
-- **Button Names in Documentation**: If a button has a specific UI name, translate it capitalized like "knappen Hent". If the button has only an icon (no text label), use a descriptive phrase like "knappen til at hente et billede".
-  - *Source:* "Click the Download button." → *Target:* "Klik på knappen Hent."
-
-- **UI References — Follow Source Quotation Marks**: When referencing UI elements in documentation, follow the source for quotation marks. If the English software term starts with a lower-case letter, add curly quotes “ (\u201C) and ” (\u201D) to distinguish the software term from the rest of the string, or capitalize the first word.
-  - *Source:* "Select the \"sleep\" option." → *Target:* "Vælg muligheden \u201Csleep\u201D."
-
-- **For More Information — Use "på" or "under"**: Translate "For more information, see" as "Du kan få flere oplysninger på/under" or "Der findes flere oplysninger om XX på". Use "på" for URL/web/page number references, and "under" for chapter/section references.
-  - *Source:* "For more information, see page 5." → *Target:* "Du kan få flere oplysninger på side 5."
-
-- **Touch and Hold**: Translate "Touch and hold" as "Hold en finger på…" or "Hold knappen nede…". Translate "Press xxx and hold down xxx" as "Tryk på og hold xxx nede".
-  - *Source:* "Touch and hold the icon." → *Target:* "Hold en finger på symbolet."

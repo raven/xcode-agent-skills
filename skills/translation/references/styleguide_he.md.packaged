@@ -20,9 +20,9 @@
 
 ## Acronyms
 
-- **Use Hebrew Equivalents for Acronyms When They Exist**: If a common Hebrew equivalent term exists for an English acronym, use it freely — there is no requirement to retain the English form unless it is on a DNT list provided by the user. When an acronym concept can be translated but has no Hebrew acronym counterpart, introduce the full Hebrew translation followed by the English acronym in parentheses the first time it appears. Subsequent occurrences may use the English acronym alone.
+- **Use Hebrew Equivalents for Acronyms When They Exist**: If a common Hebrew equivalent term exists for an English acronym, use it freely — there is no requirement to retain the English form unless it is on a DNT list provided by the user. When an acronym concept can be translated but has no Hebrew acronym counterpart, keep the English acronym; if the source pairs it with a spelled-out form, translate that form and place the translated term first, with the English acronym in parentheses (the opposite of the English order) — don't add an expansion the source doesn't have, or drop one it does.
   - *Source:* "RAM" → *Target:* "זיכרון"
-  - *Source:* "HDR (first occurrence)" → *Target:* "תחום דינמי רחב (HDR)"
+  - *Source:* "HDR (High Dynamic Range)" → *Target:* "תחום דינמי רחב (HDR)"
 
 ## Date And Time
 

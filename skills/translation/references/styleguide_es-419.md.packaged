@@ -134,8 +134,7 @@
 
 ## Addresses
 
-- **Use Latin American Address Format**: Replace English postal address placeholders with Latin American conventions. Mexican postal address format is a common default.
-  - *Source:* "123 Main Street, Anytown, State ZIP" → *Target:* "Calle 123, Colonia, CP, Estado"
+- **Use Latin American Address Format**: Replace English postal address placeholders with Latin American conventions. Mexican postal address format is a common default. Example format: `Calle 123, Colonia, CP, Estado`.
 
 ## Trademarks And Product Names
 

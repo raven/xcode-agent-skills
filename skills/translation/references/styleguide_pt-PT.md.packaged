@@ -73,13 +73,13 @@
 
 ## Punctuation
 
-- **Use Curly Quotation Marks; Period Outside Closing Quote**: Use curly (typographic) quotation marks, as in the source. The period always goes outside the closing quotation mark. Do not use double periods when an abbreviation ends a sentence. In software strings, use quotation marks only where intelligibility would otherwise be compromised; in documentation, use them to distinguish UI items.
+- **Use Curly Quotation Marks; Period Outside Closing Quote**: Use curly (typographic) quotation marks, as in the source. The period always goes outside the closing quotation mark. Do not use double periods when an abbreviation ends a sentence.
   - *Source:* "The field includes the word \u201Cbundle.\u201D" → *Target:* "O campo inclui a palavra \u201Cpacote\u201D." (period outside closing quote)
 
 - **Em-Dash Replaced by En-Dash**: The em-dash (—) is used only in Portuguese literature to introduce dialogue. Replace it with an en-dash (–) preceded by a non-breaking space and followed by a regular space. Never substitute a plain hyphen where a non-breaking hyphen should be used.
   - *Source:* "Settings — Overview" → *Target:* "Definições – Visão geral"
 
-- **UI References in Documentation Use Quotation Marks**: In documentation deliverables, enclose localized UI item names in quotation marks to distinguish them from surrounding text, capitalizing only the first letter. In software, use quotation marks only where intelligibility could otherwise be compromised. App and utility names are always capitalized and do not require quotation marks. Quotation marks are also not needed when specifying a UI path.
+- **UI References — Quotation Marks**: Use quotation marks around a UI item name only where intelligibility could otherwise be compromised. App and utility names are always capitalized and do not require quotation marks. Quotation marks are also not needed when specifying a UI path.
   - *Source:* "Tap Delete." → *Target:* "Toque em \u201CApagar\u201D."
   - *Source:* "Settings > General > Accessibility" → *Target:* "Definições > Geral > Acessibilidade" (no quotes in UI path)
 
@@ -112,7 +112,7 @@
 - **Standardized translations**: Standardized translations are somewhat similar to established terminology. Certain sentences will always be translated consistently the same way. The usage of consistent translations for repetitive text phrases is recommended.
   - *Source:* "More Info / Learn More / Make sure that … " → *Target:* "Informação adicional / Saiba mais / Certifique‑se de que…"
 
-- **ReadMe, What’s New, Welcome and Store texts**: ReadMe texts style should be clear and concise. Addressing the user directly should be avoided. In these types of files, bulleted lists are normally used to list items (e.g. new features, bug fixes) without a specific order. In this case, bullet point items should be treated as “standalone” items and begin with an uppercase letter and end with a full stop, regardless of whether they are preceded by an introductory sentence ending or not in a colon “:”. When an introductory sentence ending in a colon and each subsequent bullet point item form a grammatical unit, each item should begin with a lowercase letter and end with a semi-colon “;”. A full stop is used only on the last item of the list.
+- **What’s New, Welcome and Store texts**: These texts should be clear and concise. Addressing the user directly should be avoided. In these types of files, bulleted lists are normally used to list items (e.g. new features, bug fixes) without a specific order. In this case, bullet point items should be treated as “standalone” items and begin with an uppercase letter and end with a full stop, regardless of whether they are preceded by an introductory sentence ending or not in a colon “:”. When an introductory sentence ending in a colon and each subsequent bullet point item form a grammatical unit, each item should begin with a lowercase letter and end with a semi-colon “;”. A full stop is used only on the last item of the list.
   - *Source:* "This update adds the following features:
 • Introduces support for AirPods Pro" → *Target:* "Esta atualização inclui as seguintes melhorias:
 • Suporte para AirPods Pro."
@@ -122,18 +122,3 @@
 • resolve um problema que podia impedir um dispositivo de tocar ou vibrar ao receber uma chamada;
 • resolve um problema que podia fazer com que não fossem recebidas notificações no Apple Watch."
 
-- **Style in Documentation Deliverables**: When translating user guides (and documentation in general), address the user formally (3rd person) and use a natural, clear style, avoiding literal translation.
-  - *Source:* "Select the Accessory button, then select an accessory to turn it on or off." → *Target:* "Selecione o botão \u201CAcessório\u201D e, depois, selecione um acessório para o ativar ou desativar."
-
-- **Headings and Titles in Documentation Deliverables**: The titles of the user guides should be capitalized (e.g. Manual do Utilizador da aplicação); section titles should only have the first letter capitalized. Titles of sections and procedures should be translated using the infinitive form, followed by a colon. Instructions should be translated using the imperative form.
-  - *Source:* "App User Guide" → *Target:* "Manual do Utilizador da aplicação"
-
-- **Lists in Documentation Deliverables**: Bulleted and numbered lists should follow Portuguese punctuation rules for sentences. Each item should therefore begin with an uppercase letter and end with a full stop. Follow this approach regardless of whether the list is preceded by an introductory sentence ending in a colon or not. Exception: When an introductory sentence ending in a colon and each subsequent bullet point item form a grammatical unit, each item should begin with a lowercase letter and end with a semi-colon “;”. A full stop is used only on the last item of the list.
-  - *Source:* "Do any of the following:
-• View live video from multiple cameras at the same time: Select the Grid View button." → *Target:* "Proceda de qualquer uma das seguintes formas:
-• Ver vídeo em direto de várias câmaras em simultâneo: selecione o botão \u201CVista em grelha\u201D."
-
-- **In-line Alt-text Elements in Documentation Deliverables**: Alt-text elements usually contain a word by word description of the content of an image, are used for accessibility purposes and are meant to be read aloud. Since these Alt-texts are not visible, quotation marks should not be used to highlight UI items. In the case of Alt-text for graphical UI items found in running text, the alternative text should begin with lowercase, and it should be handled using a gender-neutral wording in the surrounding text as the only visible element will be the graphic.
-  - *Source:* "Use <image><AltText>the Delete key</AltText></image> with any of the VoiceOver
-typing styles." → *Target:* "Use <image><AltText>tecla Delete</AltText></image> com qualquer um dos estilos
-de datilografia do VoiceOver."

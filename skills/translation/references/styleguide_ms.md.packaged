@@ -17,7 +17,7 @@
 
 ## Acronyms
 
-- **Do Not Translate Industry Acronyms**: Standard technology acronyms (HD, SD, Wi-Fi, WLAN, CD, RAM) are kept as-is. When a full form appears in source text for documentation, place the Malay translation first and the acronym in parentheses.
+- **Do Not Translate Industry Acronyms**: Standard technology acronyms (HD, SD, Wi-Fi, WLAN, CD, RAM) are kept as-is. When the source pairs an acronym with a spelled-out form, translate that form; don't add an expansion the source doesn't have.
   - *Source:* "Wireless Local Area Network (WLAN)" → *Target:* "Rangkaian Kawasan Setempat Wayarles (WLAN)"
 
 ## Date And Time
@@ -34,8 +34,7 @@
 
 ## Names And Addresses
 
-- **Malaysian Address Format**: Sample names follow the source (John Doe stays as John Doe). Addresses follow Malaysian conventions: unit number and street, then postcode and city, then state and country. The Malaysian postcode (Poskod) is a 5-digit number.
-  - *Source:* "John Doe, 123 Main St, City, Country" → *Target:* "Ahmad Bin Ali, 25, Jalan 12/E, Taman Ria, 47300 Petaling Jaya, Selangor Darul Ehsan, Malaysia"
+- **Malaysian Address Format**: Sample names follow the source (John Doe stays as John Doe). Addresses follow Malaysian conventions: unit number and street, then postcode and city, then state and country. The Malaysian postcode (Poskod) is a 5-digit number. Example format: `25, Jalan 12/E, Taman Ria, 47300 Petaling Jaya, Selangor Darul Ehsan, Malaysia`.
 
 ## Numerals
 

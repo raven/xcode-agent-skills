@@ -106,19 +106,6 @@ When plural is not marked in the word itself: Reflect the plural meaning through
   - *Source:* "Reply" → *Target:* "उत्तर द्या"
   - *Source:* "Edit (macOS menu bar)" → *Target:* "संपादन (noun)"
 
-- **User Guide Headings Use Assertive Infinitive Form**: In user guide headings that start with a verb in English, translate the verb in assertive/infinitive form (करणे), not in imperative form (करा). Sub-headings that describe a process step are translated in imperative form.
-  - *Source:* "Connect iPhone to the internet" → *Target:* "iPhone इंटरनेटला कनेक्ट करणे (heading)"
-  - *Source:* "Join a Personal Hotspot" → *Target:* "वैयक्तिक हॉटस्पॉटला जॉइन करा (sub-heading)"
-
-- **Lists**: For a bulleted or numbered list in a user guide, the tonality of the translation should be uniform across all points. There are different types of list construction. Listed items should match the flow of the source. The heading and the listed items should be in continuation.
-  - *Source:* "Do any of the following:
-• Update your contact information
-• Change your password
-• Add or remove Account Recovery Contacts" → *Target:* "खालीलपैकी कोणतेही एक करा :
-• तुमची संपर्क माहिती अपडेट करा
-• तुमचा पासवर्ड बदला
-• अकाउंट रिकव्हरी संपर्क समाविष्ट करा किंवा काढून टाका"
-
 ## Variables
 
 - **Number Variables When Reordering; Preserve Decimal Format Strings**: Keep all variables exactly as they appear in the source. If Marathi word order requires reordering, add positional indices (n$) immediately after the % sign in all variables of that string. Do not change a period to a comma inside numeric format strings such as %.1f — the decimal separator is handled by the software.
@@ -135,7 +122,7 @@ When plural is not marked in the word itself: Reflect the plural meaning through
 - **Encode ॲ as a Single Character**: Encode ॲ (U+0972) as the single precomposed character, not the sequence अ + ॅ (U+0905 + U+0945).
   - *Source:* "Actor" → *Target:* "ॲक्टर"
 
-## Specific Localization Deliverables
+## Emoji
 
 - **Emoji**: Try to avoid using prepositions and helping words in Emoji translations unless necessary.
   - *Source:* "%d black cat emoji " → *Target:* "%d काळी मांजर इमोजी (not %d काळ्या रंगाच्या मांजरीची इमोजी)"

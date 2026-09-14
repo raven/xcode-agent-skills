@@ -58,7 +58,7 @@
 
 - **Use the Ellipsis Character — Never Three Separate Dots**: Always insert the single ellipsis character (…) rather than using three consecutive periods. The single character provides correct spacing and proper rendering by accessibility tools.
 
-- **Bullet Points: Full Stop for Sentences, None for Enumerations**: Add a full stop to bullet-point items that are grammatically complete sentences, even if the source omits it. Items that are enumerations (noun phrases or fragments) require no punctuation. In ReadMe files, always add a full stop to every bullet point.
+- **Bullet Points: Full Stop for Sentences, None for Enumerations**: Add a full stop to bullet-point items that are grammatically complete sentences, even if the source omits it. Items that are enumerations (noun phrases or fragments) require no punctuation.
   - *Source:* "• Music and podcasts you enjoy" → *Target:* "• Músicas e podcasts que você curte" (no full stop — enumeration)
   - *Source:* "• O app Mensagens podia ser encerrado inesperadamente" → *Target:* "• O app Mensagens podia ser encerrado inesperadamente."
 

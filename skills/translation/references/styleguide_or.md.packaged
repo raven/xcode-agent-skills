@@ -128,7 +128,7 @@
 - **Category Labels in Sentences**: When a transliterated category label refers to the UI tab/feature or is preceded by a number/quantifier, keep it singular (e.g., 3 notifications -> 3 ଟି ନୋଟିଫିକେଶନ୍). Use the plural marker (ଗୁଡ଼ିକ) only when specifically referring to multiple distinct items in a descriptive sentence.
   - *Source:* "3 new notifications" → *Target:* "3 ଟି ନୂଆ ନୋଟିଫିକେଶନ୍"
 
-- **Button Names in Sentences**: When referring to button names in documentation, use double curly quotes (“ (\u201C) and ” (\u201D)) if the button name's translation breaks the sentence flow or creates grammatical ambiguity. Quotes are not needed if such buttons and/or CTAs are already bound by asterisk signs.
+- **Button Names in Sentences**: When a button name is referenced in running text, use double curly quotes (“ (\u201C) and ” (\u201D)) if the name breaks the sentence flow or creates grammatical ambiguity. Quotes are not needed if the button or CTA is already bound by asterisk signs.
   - *Source:* "click Add button" → *Target:* "\u201Cଯୋଡ଼ନ୍ତୁ\u201D ବଟନ୍ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ"
 
 - **Inline Alt-Text Elements**: Do not translate the structural tags placed inside angle brackets (e.g., <AltText>). However, the text inside the tags may be translated, and the order of inline elements can be changed to fit Odia sentence structure.

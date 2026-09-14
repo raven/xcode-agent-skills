@@ -146,8 +146,7 @@
 
 ## Addresses
 
-- **Use Spanish Postal Address Format**: Replace English placeholder addresses with the standard Spanish postal address format.
-  - *Source:* "123 Main Street, Anytown, State ZIP" → *Target:* "Calle, 123, Localidad, C. P. Provincia"
+- **Use Spanish Postal Address Format**: Replace English placeholder addresses with the standard Spanish postal address format. Example format: `Calle, 123, Localidad, C. P. Provincia`.
 
 ## Special Characters
 
@@ -267,77 +266,3 @@
 
 - **Use the Double Prime for Inches**: For inches use the double prime (″ (\u2033)) rather than the quotation mark symbol.
   - *Source:* "2\u201D" → *Target:* "2\u2033"
-
-## Documentation Terminology
-
-- **Terminology — Match the Corresponding Software**: Use terminology consistent with the Spanish localization of the corresponding software product. For example, when translating iMovie Help, use the same terms found in the Spanish iMovie UI.
-  - *Source:* "Export movie" → *Target:* "Exportar película"
-
-## Documentation Titles
-
-- **Doc Titles — Use Infinitive by Default**: Documentation procedure titles use the infinitive by default.
-  - *Source:* "Send messages" → *Target:* "Enviar mensajes"
-
-- **Doc Titles — Tips Explaining the App Use Imperative, Not Infinitive**: For tips that explain the interface of an app, tip titles use the imperative form instead of the default infinitive.
-  - *Source:* "Share a photo" → *Target:* "Comparte una foto"
-
-- **Doc Titles — Uppercase After Colon When Title and Instruction Are on Same Line**: When an infinitive title is followed by a colon and the instruction appears on the same line, use uppercase after the colon.
-  - *Source:* "Select a network: Tap a network in the list." → *Target:* "Seleccionar una red: Toca una red de la lista."
-
-- **Doc Titles — Translate Gerunds as 'Cómo + Infinitive'**: Translate English gerund titles (-ing) as a noun or "Cómo + infinitivo" in Spanish documentation.
-  - *Source:* "Sending messages" → *Target:* "Cómo enviar mensajes"
-
-- **Doc Titles — Replace First/Second Person with Impersonal Construction**: If the English title uses first or second person (verb or possessive), use an impersonal construction in Spanish whenever possible.
-  - *Source:* "I can't send messages" → *Target:* "No se pueden enviar mensajes"
-
-- **Doc Titles — Turn Direct Questions into Indirect Questions**: Translate English direct-question titles as indirect questions in Spanish.
-  - *Source:* "How do I use Siri?" → *Target:* "Cómo usar Siri"
-
-- **Feature Article Titles — Use Imperative**: Titles in feature articles (passion points) under "Welcome" and “Introducing…” sections use the imperative form.
-  - *Source:* "Discover new music" → *Target:* "Descubre nueva música"
-
-## Documentation Numbers
-
-- **Numbers in Documentation — Prefer Written-Out Forms**: Write numbers as words when they can be expressed in one or two words, or when they are round numbers.
-  - *Source:* "3 steps" → *Target:* "tres pasos"
-  - *Source:* "100 photos" → *Target:* "cien fotos"
-
-## Documentation Acronyms
-
-- **Acronyms — Spell Out at First Occurrence in Printed Docs**: In printed documentation, spell out the full form at first occurrence with the acronym in parentheses. Not required in help pages.
-  - *Source:* "RAM" → *Target:* "memoria de acceso aleatorio (RAM)"
-
-## Documentation Callouts
-
-- **Callouts — Use Imperative for Instructions**: Callout text that is an instruction starting with a verb (tap, click, swipe…) uses the imperative form.
-  - *Source:* "Click the button to continue." → *Target:* "Haz clic en el botón para continuar."
-
-- **Callouts — Use Infinitive for Button Descriptions**: Callout text describing what a button does uses the infinitive form.
-  - *Source:* "Save your file" → *Target:* "Guardar el archivo"
-
-- **Callouts — No Period for Nominal Phrases or Infinitives**: Nominal phrases and callouts starting with an infinitive do not end with a period.
-  - *Source:* "Main window" → *Target:* "Ventana principal"
-
-- **Callouts — Period for Full Sentences**: Full sentences with a conjugated verb in callouts end with a period.
-  - *Source:* "This option enables fast charging." → *Target:* "Esta opción activa la carga rápida."
-
-## Documentation Alt Text
-
-- **Alt Text — Lowercase if Mid-Sentence**: Alt text embedded mid-sentence (e.g. describing a button inline) begins with a lowercase letter.
-  - *Source:* "Tap [Arrow icon] to go back." → *Target:* "Toca [icono de flecha] para volver."
-
-- **Alt Text — Initial Cap for Standalone Descriptions**: Alt text that is a standalone image description begins with a capital letter.
-  - *Source:* "Arrow pointing right" → *Target:* "Flecha apuntando a la derecha"
-
-- **Alt Text — Capitalize Image-Buttons**: Alt text for elements that function as buttons always begins with a capital letter.
-  - *Source:* "Share button" → *Target:* "Compartir"
-
-## Documentation UI Refs
-
-- **UI References in Doc Lists — No Quotes When Already Formatted; Uppercase After Colon**: When UI items in documentation appear in a list already highlighted in bold or italics, quotation marks are not needed. Use uppercase after the colon introducing the list.
-  - *Source:* "• General: Adjust system settings." → *Target:* "• General: Ajustar opciones del sistema."
-
-## Documentation All Caps
-
-- **ALL CAPS in Documentation Should Be Maintained**: If English uses ALL CAPS, Spanish must use them as well. This applies to Documentation only.
-  - *Source:* "WARNING" → *Target:* "ADVERTENCIA"
