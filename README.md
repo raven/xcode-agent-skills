@@ -2,7 +2,7 @@
 
 The agent skills (`SKILL.md` bundles) that Apple ships inside Xcode, tracked over time so changes between Xcode releases show up as diffs.
 
-Current snapshot: **Xcode 27.0 release (27A266a)** — 13 skills.
+Current snapshot: **Xcode 27.1 beta 1 (27A9269)** — 13 skills.
 
 ## Where these come from
 
@@ -10,11 +10,11 @@ Xcode plugins contribute skills through the `Xcode.IDEIntelligenceProtocol.Skill
 
 | Skills | Source |
 | --- | --- |
-| `adopt-c-bounds-safety`, `app-intents-specialist`, `app-intents-whats-new-27`, `audit-xcode-security-settings`, `building-document-based-swiftui-applications`, `device-interaction`, `modernize-tests`, `swiftui-specialist`, `swiftui-whats-new-27`, `uikit-app-modernization` | `xcrun agent skills export` against a running Xcode (the supported route — these are the "globally available" skills) |
+| `adopt-c-bounds-safety`, `app-intents-specialist`, `app-intents-whats-new-27`, `audit-xcode-security-settings`, `building-document-based-swiftui-applications`, `device-interaction`, `modernize-tests`, `swiftui-specialist`, `swiftui-whats-new-27`, `app-resizability` | `xcrun agent skills export` against a running Xcode (the supported route — these are the "globally available" skills) |
 | `translation`, `translation-coordinator` | Copied from `IDEXCStringsSupport.framework/Versions/A/Resources/Skills/` in the app bundle (not globally available; Xcode injects them into its localization agent flow). As of beta 3 the bundled files carry a `.packaged` suffix, preserved here |
 | `ios-dynamic-text` | Extracted from the `IDEAXSpecialist` framework binary, where it's embedded as a string (also not exported; `SKILL.md` only, no references) |
 
-`skills/c-bounds-safety` is a stale leftover, not part of the current snapshot: the skill was renamed to `adopt-c-bounds-safety` in beta 3 (verified by re-running the export against a beta 3 install), but `xcrun agent skills export --replace-existing` only overwrites — it never deletes skills a new build drops.
+`skills/c-bounds-safety` and `skills/uikit-app-modernization` are stale leftovers, not part of the current snapshot: the first was renamed to `adopt-c-bounds-safety` in beta 3 (verified by re-running the export against a beta 3 install), and the second to `app-resizability` in 27.1 beta 1, but `xcrun agent skills export --replace-existing` only overwrites — it never deletes skills a new build drops.
 
 ## Updating for a new Xcode build
 
