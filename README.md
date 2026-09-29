@@ -2,7 +2,7 @@
 
 The agent skills (`SKILL.md` bundles) that Apple ships inside Xcode, tracked over time so changes between Xcode releases show up as diffs.
 
-Current snapshot: **Xcode 27.1 beta 1 (27A9269)** — 13 skills.
+Current snapshot: **Xcode 27.2 beta 2 (27B5028f)** — 13 skills.
 
 ## Where these come from
 
